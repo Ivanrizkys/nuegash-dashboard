@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/src/global/*": ["src/global/*"],
+      "@/src/assets/*": ["src/assets/*"],
+      "@/src/components/atoms/*": ["src/components/atoms/*"],
+      "@/src/components/molecules/*": ["src/components/molecules/*"],
+      "@/src/components/organisms/*": ["src/components/organisms/*"],
+      "@/src/components/pages/*": ["src/components/pages/*"],
+      "@/src/config/*": ["src/config/*"],
+      "@/src/libs/dto/*": ["src/config/dto/*"],
+      "@/src/libs/enums/*": ["src/config/enums/*"],
+      "@/src/routes/*": ["src/routes/*"],
+      "@/src/store/*": ["src/store/*"],
+      "@/src/utils/*": ["src/utils/*"],
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
