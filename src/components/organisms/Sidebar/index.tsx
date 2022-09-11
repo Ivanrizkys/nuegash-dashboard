@@ -15,10 +15,6 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const value = useSelector((state: RootState) => state.sidebar.value);
 
-  useEffect(() => {
-    console.log("ini adalah state nya adik adik", value);
-  }, [value]);
-
   const handleChangeSidebar = (value: number) => {
     dispatch(updateSidebar(value));
   };
