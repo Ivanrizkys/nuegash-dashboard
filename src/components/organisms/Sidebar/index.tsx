@@ -8,21 +8,21 @@ import Setting from "@/src/assets/icons/Setting";
 import Overview from "@/src/assets/icons/Overview";
 import { useDispatch, useSelector } from "react-redux";
 import AppLogo from "@/src/components/molecules/AppLogo";
-import Item from "@/src/components/organisms/Sidebar/Item"
-import HelpCenter from "@/src/components/organisms/Sidebar/HelpCenter"
+import Item from "@/src/components/organisms/Sidebar/Item";
+import HelpCenter from "@/src/components/organisms/Sidebar/HelpCenter";
 
 const Sidebar = () => {
-  const dispatch = useDispatch()
-  const value = useSelector((state: RootState) => state.sidebar.value)
-  
+  const dispatch = useDispatch();
+  const value = useSelector((state: RootState) => state.sidebar.value);
+
   useEffect(() => {
-    console.log("ini adalah state nya adik adik", value)
-  }, [value])
+    console.log("ini adalah state nya adik adik", value);
+  }, [value]);
 
   const handleChangeSidebar = (value: number) => {
-    dispatch(updateSidebar(value))
-  }
-  
+    dispatch(updateSidebar(value));
+  };
+
   return (
     <div className="fixed top-0 left-0 w-[252px] bg-primary-0">
       <div className="relative h-screen box-border z-10 p-8">
@@ -35,7 +35,6 @@ const Sidebar = () => {
             to="/"
             handleClick={handleChangeSidebar}
             value={1}
-            
           />
           <Item
             title="Task"

@@ -1,7 +1,7 @@
-import React from "react"
-import Routes from "@/src/routes/index"
-import Spinner from "@/src/components/atoms/Spinner"
-import Sidebar from "@/src/components/organisms/Sidebar"
+import React from "react";
+import Routes from "@/src/routes/index";
+import Spinner from "@/src/components/atoms/Spinner";
+import Sidebar from "@/src/components/organisms/Sidebar";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
         <Routes />
       </React.Suspense>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

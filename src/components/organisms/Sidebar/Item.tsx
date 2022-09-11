@@ -6,8 +6,8 @@ interface ItemProps {
   icon: ReactNode;
   active: boolean;
   to: string;
-  handleClick: (value: number) => void
-  value: number
+  handleClick: (value: number) => void;
+  value: number;
 }
 
 const Item = ({ title, icon, active, to, handleClick, value }: ItemProps) => {
@@ -20,7 +20,13 @@ const Item = ({ title, icon, active, to, handleClick, value }: ItemProps) => {
         onClick={() => handleClick(value)}
       >
         {icon}
-        <p className={`text-sm font-semibold ${active ? "text-secondary-500" : "text-secondary-300"}`}>{title}</p>
+        <p
+          className={`text-sm font-semibold ${
+            active ? "text-secondary-500" : "text-secondary-300"
+          }`}
+        >
+          {title}
+        </p>
       </div>
     </Link>
   );

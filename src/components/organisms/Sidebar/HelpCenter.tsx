@@ -2,9 +2,7 @@ const HelpCenter = () => {
   return (
     <div className="relative">
       <div className="w-full h-full bg-secondary-500 text-primary-0 hover:bg-primary-500 peer pointer-events-none rounded-[10px] relative overflow-hidden px-4 pb-4 text-center transition-all duration-500">
-        <p className="font-semibold text-base mt-[71px]">
-          Help Center
-        </p>
+        <p className="font-semibold text-base mt-[71px]">Help Center</p>
         <p className="font-medium text-xs mt-3">
           Having Trouble in Learning. Please contact us for more questions.
         </p>
