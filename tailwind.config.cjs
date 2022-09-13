@@ -8,6 +8,9 @@ module.exports = {
       sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.serif]
     },
     extend: {
+      borderRadius: {
+        default: '10px'
+      },
       colors: {
         'primary-0': '#FFFFFF',
         'primary-100': '#DCE4FF',
