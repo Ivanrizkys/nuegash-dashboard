@@ -5,7 +5,7 @@ import Sidebar from "@/src/components/organisms/Sidebar";
 
 function App() {
   return (
-    <div className="font-sans">
+    <div className="font-sans box-border">
       <Sidebar />
       <React.Suspense fallback={<Spinner />}>
         <Routes />
