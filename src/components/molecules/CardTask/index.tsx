@@ -18,7 +18,7 @@ const CardTask = (props: CardTaskProps) => {
   const id = useId();
 
   return (
-    <div className="w-full max-w-[328px] bg-primary-0 text-secondary-500 rounded-default cursor-pointer group p-6">
+    <div className="w-full max-w-[328px] min-w-[327px] bg-primary-0 text-secondary-500 rounded-default cursor-pointer group p-6">
       <div className="w-full h-[110px] overflow-hidden rounded-default">
         <img
           src={image}
