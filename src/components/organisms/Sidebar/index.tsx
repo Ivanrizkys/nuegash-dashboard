@@ -20,7 +20,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed top-0 -left-[252px] xl:left-0 w-[252px] bg-primary-0 transition-[left] duration-500">
+    <div className="fixed top-0 -left-[252px] xl:left-0 w-[252px] bg-primary-0 transition-[left] duration-500 z-20">
       <div className="relative h-screen box-border z-10 p-8">
         <AppLogo />
         <div className="pt-[60px] flex flex-col gap-y-6">

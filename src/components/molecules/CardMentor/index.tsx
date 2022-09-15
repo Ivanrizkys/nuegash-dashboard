@@ -18,7 +18,7 @@ const CardMentor = (props: CardMentorProps) => {
   const id = useId();
 
   return (
-    <div className="w-full max-w-[328px] bg-primary-0 rounded-default cursor-pointer p-6">
+    <div className="w-full max-w-[328px] min-w-[327px] bg-primary-0 rounded-default cursor-pointer p-6">
       <div className="flex items-center">
         <img
           src={avatar}
