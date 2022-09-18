@@ -1,0 +1,67 @@
+import { useId } from "react";
+import { Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ArrowLeft from "@/src/assets/icons/ArrowLeft";
+import ArrowRight from "@/src/assets/icons/ArrowRight";
+import CardMentor from "@/src/components/molecules/CardMentor";
+
+interface MentorSlideProps {
+  title: string;
+  swiperClass: string;
+  // mentors: Array<{
+  //   id: string;
+  //   name: string;
+  //   role: string;
+  //   task: number;
+  //   rating: number;
+  //   review: number;
+  //   avatar: string;
+  //   isFollowed: boolean;
+  // }>;
+}
+
+const MentorSlide = ({ title, swiperClass }: MentorSlideProps) => {
+  return (
+    <div className="text-secondary-500">
+      <div className="flex items-center justify-between">
+        <h2 className="text-2xl font-semibold">{title}</h2>
+        <div className="flex items-center gap-x-[10px]">
+          <div className={`cursor-pointer ${swiperClass}-prev`}>
+            <ArrowLeft />
+          </div>
+          <div className={`cursor-pointer ${swiperClass}-next`}>
+            <ArrowRight />
+          </div>
+        </div>
+      </div>
+      <div className="mt-[20px]">
+        <Swiper
+          navigation={{
+            nextEl: `.${swiperClass}-next`,
+            prevEl: `.${swiperClass}-prev`,
+          }}
+          modules={[Navigation]}
+          className={swiperClass}
+          slidesPerView={"auto"}
+          spaceBetween={32}
+        >
+          {[0, 1, 2, 3, 4, 5].map((value) => (
+            <SwiperSlide key={useId()}>
+              <CardMentor
+                name="Cika Febriana"
+                role="UI UX Design"
+                task={40}
+                rating={4.7}
+                review={750}
+                avatar="https://bit.ly/3QEIVsR"
+                isFollowed={false}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+    </div>
+  );
+};
+
+export default MentorSlide;
