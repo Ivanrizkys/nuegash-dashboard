@@ -21,7 +21,7 @@ const TaskToday = (props: TaskTodayProps) => {
   return (
     <div className="w-full bg-primary-0 text-secondary-500 rounded-default p-6">
       <div className="flex items-center justify-between mb-[20px]">
-        <h3 className="text-base font-semibold">Detail Task</h3>
+        <h3 className="text-base font-semibold">Task Today</h3>
         <div className="cursor-pointer">
           <LinearMore />
         </div>
