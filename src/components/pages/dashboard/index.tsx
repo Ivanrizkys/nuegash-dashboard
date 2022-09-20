@@ -1,44 +1,24 @@
-import 'swiper/css';
-import "./custom.css"
+import "swiper/css";
+import "./custom.css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import ArrowLeft from "@/src/assets/icons/ArrowLeft";
-import ArrowRight from "@/src/assets/icons/ArrowRight";
-import Notification from "@/src/assets/icons/Notification";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import CardMentor from "@/src/components/molecules/CardMentor";
-import CardTask from "@/src/components/molecules/CardTask";
+import ArrowDown from "@/src/assets/icons/ArrowDown";
+import AppBar from "@/src/components/organisms/AppBar";
+import TaskSlide from "@/src/components/organisms/TaskSlide"
 import TaskToday from "@/src/components/organisms/TaskToday";
-import { useId } from 'react';
-import ArrowDown from '@/src/assets/icons/ArrowDown';
-
+import MentorSlide from "@/src/components/organisms/MentorSlide"
+import { CircularProgressbar } from "react-circular-progressbar";
 
 const Dashboard = () => {
   return (
     <div className="xl:ml-[252px] flex bg-[#FAFAFA] min-h-screen">
       <div className="w-8/12 p-8">
-        <div className="flex justify-between items-center">
-          <div>
-            <h2 className="text-2xl font-semibold text-secondary-500 mb-2">
-              Hi, Yuna Marinka
-            </h2>
-            <h3 className="text-base font-medium text-secondary-400">
-              Let's finish your task today
-            </h3>
-          </div>
-          <div className="flex items-center gap-x-6">
-            <div className="cursor-pointer">
-              <Notification active />
-            </div>
-            <img
-              src="/profile.png"
-              className="w-[52px] h-[52px] cursor-pointer"
-              alt="profile"
-            />
-          </div>
-        </div>
+        <AppBar
+          title={`Hi, Yuna Marinka`}
+          userImg={"/profile.png"}
+          description="Let's finish your task today"
+          notificationActive={true}
+        />
 
         <div className="flex justify-between gap-x-8 mt-11">
           <div className="min-w-[194px] w-2/12 bg-secondary-500 rounded-default p-[20px] text-primary-0">
@@ -87,94 +67,14 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="text-secondary-500 mt-8">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">Monthly Mentors</h2>
-            <div className="flex items-center gap-x-[10px]">
-              <div className="cursor-pointer list-mentor-prev">
-                <ArrowLeft />
-              </div>
-              <div className="cursor-pointer list-mentor-next">
-                <ArrowRight />
-              </div>
-            </div>
-          </div>
-          <div className="mt-[20px]">
-            <Swiper
-              navigation={{
-                nextEl: ".list-mentor-next",
-                prevEl: ".list-mentor-prev"
-              }}
-              modules={[Navigation]}
-              className="list-mentor"
-              slidesPerView={"auto"}
-              spaceBetween={32}
-            >
-              {[0,1,2,3,4,5].map((value) => (
-                <SwiperSlide key={useId()}>
-                  <CardMentor
-                    name="Cika Febriana"
-                    role="UI UX Design"
-                    task={40}
-                    rating={4.7}
-                    review={750}
-                    avatar="https://bit.ly/3QEIVsR"
-                    isFollowed={false}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
+        <section className="mt-8">
+          <MentorSlide title="Monthly Mentors" swiperClass="monthly-mentors-list" />
+        </section>
 
-        <div className="text-secondary-500 mt-8">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">Upcoming Task</h2>
-            <div className="flex items-center gap-x-[10px]">
-              <div className="cursor-pointer list-task-prev">
-                <ArrowLeft />
-              </div>
-              <div className="cursor-pointer list-task-next">
-                <ArrowRight />
-              </div>
-            </div>
-          </div>
-          <div className="mt-[20px]">
-            <Swiper
-              navigation={{
-                nextEl: ".list-task-next",
-                prevEl: ".list-task-prev"
-              }}
-              modules={[Navigation]}
-              className="list-task"
-              slidesPerView={"auto"}
-              spaceBetween={32}
-            >
-              {[0,1,2,3,4,5].map((value) => (
-                <SwiperSlide key={useId()}>
-                  <CardTask
-                    image="https://bit.ly/3L8H2Ds"
-                    title="Creating Mobile App Design"
-                    role="UI UX Design"
-                    progress={15}
-                    timeRemaining="3 Days Left"
-                    contributor={[
-                      {
-                        image: "https://bit.ly/3QEIVsR",
-                      },
-                      {
-                        image: "https://bit.ly/3QEIVsR",
-                      },
-                      {
-                        image: "https://bit.ly/3QEIVsR",
-                      },
-                    ]}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
+        <section className="text-secondary-500 mt-8">
+          <TaskSlide title="Upcoming Task" swiperClass="upcoming-task-list" />
+        </section>
+
       </div>
       <div className="w-4/12 p-8 bg-[#F5F5F7]">
         <div className="bg-primary-0 w-full h-[160px] rounded-default mb-8"></div>
