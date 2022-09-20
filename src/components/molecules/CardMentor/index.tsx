@@ -10,15 +10,16 @@ interface CardMentorProps {
   review: number;
   avatar: string;
   isFollowed: boolean;
+  description?: string
 }
 
 const CardMentor = (props: CardMentorProps) => {
-  const { name, role, task, rating, review, avatar, isFollowed } = props;
+  const { name, role, task, rating, review, avatar, isFollowed, description } = props;
 
   const id = useId();
 
   return (
-    <div className="w-full max-w-[328px] min-w-[327px] bg-primary-0 rounded-default cursor-pointer p-6">
+    <div className={`${description ? "basis-[352px] grow" : "w-full max-w-[328px] min-w-[327px]"} bg-primary-0 rounded-default cursor-pointer p-6`}>
       <div className="flex items-center">
         <img
           src={avatar}
@@ -39,6 +40,9 @@ const CardMentor = (props: CardMentorProps) => {
           {isFollowed ? "Followed" : "+ Follow"}
         </p>
       </div>
+      {description && (
+        <p className="text-sm font-medium text-secondary-300 my-6">{description}</p>
+      )}
       <div className="flex items-center justify-between text-sm font-medium mt-5">
         <div className="flex items-center">
           <TaskItem />
