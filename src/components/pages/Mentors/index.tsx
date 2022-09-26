@@ -11,6 +11,8 @@ const Task = () => {
           title="Explore Mentors"
           userImg={"/profile.png"}
           notificationActive={true}
+          withSearch={true}
+          placeholder="Search Mentors"
         />
       </nav>
       <div className="p-8">
