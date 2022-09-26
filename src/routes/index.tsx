@@ -1,8 +1,9 @@
 import React from "react"
 import { useRoutes } from "react-router-dom";
 
-const Dashboard = React.lazy(() => import("@/src/components/pages/dashboard"))
+const Tasks = React.lazy(() => import("@/src/components/pages/Tasks"))
 const Mentors = React.lazy(() => import("@/src/components/pages/Mentors"))
+const Dashboard = React.lazy(() => import("@/src/components/pages/dashboard"))
 
 const Routes = () => {
   return useRoutes([
@@ -12,7 +13,7 @@ const Routes = () => {
     },
     {
       path: "/tasks",
-      element: "Hai sayang"
+      element: <Tasks />
     },
     {
       path: "/mentors",
