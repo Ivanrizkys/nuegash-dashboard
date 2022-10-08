@@ -1,8 +1,9 @@
-import UserAction from "@/src/components/molecules/UserAction";
-import Input from "@/src/components/atoms/Input"
-import Search from "@/src/assets/icons/Search";
-import Category from "@/src/assets/icons/Category";
+import { useRef } from "react";
 import Sort from "@/src/assets/icons/Sort";
+import Search from "@/src/assets/icons/Search";
+import Input from "@/src/components/atoms/Input"
+import Category from "@/src/assets/icons/Category";
+import UserAction from "@/src/components/molecules/UserAction";
 
 interface AppBarProps {
   title: string;
@@ -15,6 +16,8 @@ interface AppBarProps {
 
 const AppBar = (props: AppBarProps) => {
   const { title, description, userImg, withSearch, notificationActive, placeholder } = props;
+
+  const inputEl = useRef<HTMLInputElement>(null)
 
   return (
     <>
@@ -37,9 +40,13 @@ const AppBar = (props: AppBarProps) => {
             <Input  
               placeholder={placeholder as string}
               inputAdorment={
-                <Search />
+                <div className="cursor-pointer" onClick={() => inputEl.current?.focus()}>
+                  <Search />
+                </div>
               }
               adormentPosition="end"
+              ref={inputEl}
+              type="text"
             />
           </div>
           <div className="w-full max-w-[368px] flex items-center justify-between">
