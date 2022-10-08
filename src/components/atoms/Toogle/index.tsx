@@ -1,4 +1,3 @@
-import "./custom.css"
 import { useId } from "react"
 import { ToogleContainer } from "./custom"
 
