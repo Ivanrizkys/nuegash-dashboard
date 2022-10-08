@@ -29,6 +29,7 @@
       "@/src/routes/*": ["src/routes/*"],
       "@/src/store/*": ["src/store/*"],
       "@/src/utils/*": ["src/utils/*"],
+      "@/src/styles/*": ["src/styles/*"]
     }
   },
   "include": ["src"],
