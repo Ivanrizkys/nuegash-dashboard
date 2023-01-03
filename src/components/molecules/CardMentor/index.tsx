@@ -19,7 +19,7 @@ const CardMentor = (props: CardMentorProps) => {
   const id = useId();
 
   return (
-    <div className={`${description ? "basis-[352px] grow" : "w-full max-w-[328px] min-w-[327px]"} bg-primary-0 rounded-default cursor-pointer p-6`}>
+    <div className={`${description ? "w-auto" : "w-full max-w-[328px] min-w-[327px]"} bg-primary-0 rounded-default cursor-pointer p-6`}>
       <div className="flex items-center">
         <img
           src={avatar}

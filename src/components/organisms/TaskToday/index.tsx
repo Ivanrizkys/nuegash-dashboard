@@ -49,7 +49,7 @@ const TaskToday = (props: TaskTodayProps) => {
       </div>
       <div className="flex items-center justify-between mt-4">
         <div className="flex items-center gap-x-2">
-          <Clock />
+          <Clock variant="small" />
           <p className="text-base font-medium">{timeRemaining}</p>
         </div>
         <div className="flex">

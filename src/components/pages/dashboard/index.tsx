@@ -1,12 +1,11 @@
-import "swiper/css";
 import "./custom.css";
 import "swiper/css/navigation";
 import "react-circular-progressbar/dist/styles.css";
 import ArrowDown from "@/src/assets/icons/ArrowDown";
 import AppBar from "@/src/components/organisms/AppBar";
-import TaskSlide from "@/src/components/organisms/TaskSlide"
+import TaskSlide from "@/src/components/organisms/TaskSlide";
 import TaskToday from "@/src/components/organisms/TaskToday";
-import MentorSlide from "@/src/components/organisms/MentorSlide"
+import MentorSlide from "@/src/components/organisms/MentorSlide";
 import { CircularProgressbar } from "react-circular-progressbar";
 
 const Dashboard = () => {
@@ -60,7 +59,7 @@ const Dashboard = () => {
               <div className="flex items-center gap-x-2">
                 <p className="font-medium text-xs">This Week</p>
                 <div className="cursor-pointer">
-                  <ArrowDown />
+                  <ArrowDown variant="small" />
                 </div>
               </div>
             </div>
@@ -68,31 +67,33 @@ const Dashboard = () => {
         </div>
 
         <section className="mt-8">
-          <MentorSlide title="Monthly Mentors" swiperClass="monthly-mentors-list" />
+          <MentorSlide
+            title="Monthly Mentors"
+            swiperClass="monthly-mentors-list"
+          />
         </section>
 
         <section className="text-secondary-500 mt-8">
           <TaskSlide title="Upcoming Task" swiperClass="upcoming-task-list" />
         </section>
-
       </div>
       <div className="w-4/12 p-8 bg-[#F5F5F7]">
         <div className="bg-primary-0 w-full h-[160px] rounded-default mb-8"></div>
         <TaskToday
-          image="https://bit.ly/3L8H2Ds"
+          image="https://res.cloudinary.com/draaoe7rc/image/upload/v1672716435/nuegas/task/task-1_t57skg.png"
           title="Creating Mobile App Design"
           role="UI UX Design"
           progress={15}
           timeRemaining="3 Days Left"
           contributor={[
             {
-              image: "https://bit.ly/3QEIVsR",
+              image: "https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-1_io3lzd.png",
             },
             {
-              image: "https://bit.ly/3QEIVsR",
+              image: "https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-5_oecy53.png",
             },
             {
-              image: "https://bit.ly/3QEIVsR",
+              image: "https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-3_m4cy4u.png",
             },
           ]}
         />

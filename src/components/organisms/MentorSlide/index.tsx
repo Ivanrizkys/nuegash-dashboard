@@ -1,9 +1,11 @@
+import "swiper/css";
 import { useId } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ArrowLeft from "@/src/assets/icons/ArrowLeft";
 import ArrowRight from "@/src/assets/icons/ArrowRight";
 import CardMentor from "@/src/components/molecules/CardMentor";
+import { SwiperContainer } from "@/src/styles/index";
 
 interface MentorSlideProps {
   title: string;
@@ -35,30 +37,32 @@ const MentorSlide = ({ title, swiperClass }: MentorSlideProps) => {
         </div>
       </div>
       <div className="mt-[20px]">
-        <Swiper
-          navigation={{
-            nextEl: `.${swiperClass}-next`,
-            prevEl: `.${swiperClass}-prev`,
-          }}
-          modules={[Navigation]}
-          className={swiperClass}
-          slidesPerView={"auto"}
-          spaceBetween={32}
-        >
-          {[0, 1, 2, 3, 4, 5].map((value) => (
-            <SwiperSlide key={useId()}>
-              <CardMentor
-                name="Cika Febriana"
-                role="UI UX Design"
-                task={40}
-                rating={4.7}
-                review={750}
-                avatar="https://bit.ly/3QEIVsR"
-                isFollowed={false}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <SwiperContainer>
+          <Swiper
+            navigation={{
+              nextEl: `.${swiperClass}-next`,
+              prevEl: `.${swiperClass}-prev`,
+            }}
+            modules={[Navigation]}
+            className={swiperClass}
+            slidesPerView={"auto"}
+            spaceBetween={32}
+          >
+            {[0, 1, 2, 3, 4, 5].map((value) => (
+              <SwiperSlide key={useId()}>
+                <CardMentor
+                  name="Natasya Sifa Aulia"
+                  role="UI UX Design"
+                  task={40}
+                  rating={4.7}
+                  review={750}
+                  avatar="https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-1_io3lzd.png"
+                  isFollowed={false}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </SwiperContainer>
       </div>
     </div>
   );
