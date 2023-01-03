@@ -6,6 +6,8 @@ const Mentors = React.lazy(() => import("@/src/components/pages/Mentors"))
 const Settings = React.lazy(() => import("@/src/components/pages/Settings"))
 const Dashboard = React.lazy(() => import("@/src/components/pages/dashboard"))
 const Messages = React.lazy(() => import("@/src/components/pages/Messages"))
+const TaskDetail = React.lazy(() => import("@/src/components/pages/TaskDetail"))
+const ExploreTask = React.lazy(() => import("@/src/components/pages/ExploreTask"))
 
 const Routes = () => {
   return useRoutes([
@@ -15,7 +17,21 @@ const Routes = () => {
     },
     {
       path: "/tasks",
-      element: <Tasks />
+      element: <Tasks />,
+      children: [
+        {
+          path: ":slug",
+          element: <TaskDetail />
+        },
+        {
+          path: "",
+          element: <ExploreTask />
+        }
+      ]
+    },
+    {
+      path: "/tasks/:slug",
+      element: <TaskDetail />
     },
     {
       path: "/mentors",
@@ -30,7 +46,6 @@ const Routes = () => {
       element: <Settings />
     }
   ])
-
 }
 
 export default Routes
