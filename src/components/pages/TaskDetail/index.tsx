@@ -3,9 +3,10 @@ import Clock from "@/src/assets/icons/Clock"
 import People from "@/src/assets/icons/People"
 import Button from "@/src/components/atoms/Button"
 import {useDropzone} from 'react-dropzone'
-import { useCallback, useEffect, useId } from "react"
+import { useCallback } from "react"
 import FileSubmission from "@/src/assets/icons/FileSubmission"
 import { DropzoneContainer } from "./custom"
+import VideoPlayer from "../../molecules/VideoPlayer"
 
 const TaskDetail = () => {
   const onDrop = useCallback((aceptedFiles: File[]) => {
@@ -17,20 +18,11 @@ const TaskDetail = () => {
     maxSize: 5000000,
     onDrop,
   })
-
-  // useEffect(() => {
-  //   console.log("hai sayang",acceptedFiles)
-  // })
   
   return (
-      <div className="flex gap-x-8">
-        <div className="w-8/12 bg-primary-0 rounded-default">
-          {/* <img src="/task-xl.jfif" alt="task-detail" className="w-full h-[380px] object-cover rounded-default" /> */}
-          <div 
-            className="w-full h-[380px] bg-slate-600 p-6 rounded-default"
-          >
-            <div></div>
-          </div>
+      <div className="flex flex-col min-[850px]:flex-row gap-x-6 gap-y-6 min-[900px]:gap-x-8 p-6 min-[900px]:p-8">
+        <div className="w-full min-[850px]:w-8/12 bg-primary-0 rounded-default">
+          <VideoPlayer src="https://www.youtube.com/watch?v=f3nfVH1QiRA" />
           <div className="p-6 text-secondary-500">
             <h2 className="font-semibold text-[32px]">Creating Awesome Mobile Apps</h2>
             <div className="flex items-center my-4 text-sm font-medium">
@@ -71,9 +63,7 @@ const TaskDetail = () => {
             </div>
           </div>
         </div>
-
-
-        <div className="w-4/12 bg-primary-0 rounded-default p-6 text-secondary-500">
+        <div className="w-full min-[850px]:w-4/12 bg-primary-0 rounded-default p-6 text-secondary-500">
           <h4 className="text-sm font-semibold mb-6">Assigned Assignments</h4>
           <h2 className="text-2xl font-semibold mb-3">Creating Awesome Mobile Apps</h2>
           <p className="text-sm font-medium text-secondary-400">UIUX Design .Apps Design</p>
