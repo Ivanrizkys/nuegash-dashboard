@@ -31,7 +31,7 @@ const Task = () => {
                 task={40}
                 rating={4.7}
                 review={750}
-                avatar="https://res.cloudinary.com/draaoe7rc/image/upload/v1672717941/nuegas/mentor/mentor-scale-2_layncm.png"
+                avatar="https://res.cloudinary.com/draaoe7rc/image/upload/v1672717941/nuegas/mentor/mentor-scale-2_layncm.png "
                 isFollowed={false}
                 description="Hi, I'm Cika Febriana Putri. I'm an Android Developer at Google company . . ."
               />
