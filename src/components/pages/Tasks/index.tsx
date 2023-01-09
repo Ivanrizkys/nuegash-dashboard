@@ -14,7 +14,7 @@ const Tasks = () => {
           placeholder="Search Task"
         />
       </nav>
-      <div className="p-8">
+      <div>
         <Outlet />
       </div>
     </div>
