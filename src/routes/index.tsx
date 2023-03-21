@@ -1,6 +1,10 @@
 import React from "react"
 import { useRoutes } from "react-router-dom";
 
+// for auth
+const Login = React.lazy(() => import("@/src/components/pages/Login"))
+
+// for dashboard content
 const Tasks = React.lazy(() => import("@/src/components/pages/Tasks"))
 const Mentors = React.lazy(() => import("@/src/components/pages/Mentors"))
 const Settings = React.lazy(() => import("@/src/components/pages/Settings"))
@@ -44,6 +48,10 @@ const Routes = () => {
     {
       path: "/settings",
       element: <Settings />
+    },
+    {
+      path: "/auth/login",
+      element: <Login />,
     }
   ])
 }
