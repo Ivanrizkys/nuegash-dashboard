@@ -7,8 +7,115 @@ import TaskSlide from "@/src/components/organisms/TaskSlide";
 import TaskToday from "@/src/components/organisms/TaskToday";
 import MentorSlide from "@/src/components/organisms/MentorSlide";
 import { CircularProgressbar } from "react-circular-progressbar";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ChartOptions,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 
 const Dashboard = () => {
+  
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+  );
+
+
+  const options: ChartOptions<any> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        border: {
+          display: false,
+        },
+        grid: {
+          display: false
+        },
+        ticks: {
+          color: "#141522",
+          font: {
+            size: 12,
+            weight: "600"
+          },
+          callback: (value: number) => {
+            return value
+          }
+        }
+      },
+      x: {
+        border: {
+          display: false,
+        },
+        grid: {
+          color: "#F5F5F7",
+        },
+        ticks: {
+          font: {
+            size: 12,
+            weight: "600"
+          },
+          color: "#141522",
+        }
+      }
+    },
+    elements: {
+      line: {
+        tension: 0.5,
+      }
+    },
+    plugins: {
+      legend: {
+        display: false,
+        position: 'top' as const,
+      },
+      tooltip: {
+        displayColors: false,
+        bodyFont: {
+          size: 14,
+          weight: "600"
+        },
+        padding: {
+          x: 18,
+          y: 8,
+        },
+        callbacks: {
+          title: () => null,
+          label: ({raw}: {raw: number}) => `${raw} Task`
+        }
+      }
+    },
+    
+  };
+
+  const labels = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Task',
+        data: [1, 2, 1, 3, 2, 2.3, 2.8],
+        borderColor: '#141522',
+        backgroundColor: '#FFFF',
+        color: "#141522"
+      },
+    ],
+  };
+
+
+  
   return (
     <div className="xl:ml-[252px] flex bg-[#FAFAFA] min-h-screen">
       <div className="w-8/12 p-8">
@@ -61,6 +168,11 @@ const Dashboard = () => {
                 <div className="cursor-pointer">
                   <ArrowDown variant="small" />
                 </div>
+              </div>
+            </div>
+            <div className="flex bg-white p-4 rounded-default mt-5">
+              <div className="h-[98px] w-full">
+                <Line options={options} data={data} width={"100%"} />
               </div>
             </div>
           </div>
