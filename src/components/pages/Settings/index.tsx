@@ -1,21 +1,15 @@
 import "swiper/css";
-import { setTab } from "./store";
 import { useState } from "react";
-import { RootState } from "@/src/global/store";
 import Button from "@/src/components/atoms/Button"
 import { SwiperSlide, Swiper } from "swiper/react";
 import Select from "@/src/components/atoms/Select";
 import SwiperClass from 'swiper/types/swiper-class';
 import AppBar from "@/src/components/organisms/AppBar";
-import { useDispatch, useSelector } from "react-redux";
 import Checkbox from "@/src/components/atoms/Checkbox";
 import Toogle from "../../atoms/Toogle";
 
 const Settings = () => {
-  const dispatch = useDispatch();
-  const state = useSelector((state: RootState) => state.setting);
-  const { tab } = state;
-
+  const [tab, setTab] = useState<number>(0)
   const [timezoneFormat, setTimezoneFormat] = useState<string>("")
   const [swiper, setSwiper] = useState<SwiperClass>()
 
@@ -23,11 +17,11 @@ const Settings = () => {
     if (swiper) {
       swiper.slideTo(tab, 500)
     }
-    dispatch(setTab(tab))
+    setTab(tab)
   }
 
   const handleSlideChange = (e: SwiperClass) => {
-    dispatch(setTab(e.activeIndex))
+    setTab(e.activeIndex)
   }
 
   return (

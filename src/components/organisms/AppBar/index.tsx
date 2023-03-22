@@ -23,14 +23,16 @@ const AppBar = (props: AppBarProps) => {
     <>
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-semibold text-secondary-500 mb-2">
-            {title}
-          </h2>
-          {description && (
-            <h3 className="text-base font-medium text-secondary-400">
-              {description}
-            </h3>
-          )}
+          <div className="hidden xl:block">
+            <h2 className="text-2xl font-semibold text-secondary-500 mb-2">
+              {title}
+            </h2>
+            {description && (
+              <h3 className="text-base font-medium text-secondary-400">
+                {description}
+              </h3>
+            )}
+          </div>
         </div>
         <UserAction notificationActive={notificationActive} userImg={userImg} />
       </div>

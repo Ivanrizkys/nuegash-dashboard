@@ -1,22 +1,18 @@
-import { useEffect } from "react";
-import { updateSidebar } from "./store";
+import { useEffect, useState } from "react";
 import Task from "@/src/assets/icons/Task";
 import Mentor from "@/src/assets/icons/Mentor";
-import { RootState } from "@/src/global/store";
 import Message from "@/src/assets/icons/Message";
 import Setting from "@/src/assets/icons/Setting";
 import Overview from "@/src/assets/icons/Overview";
-import { useDispatch, useSelector } from "react-redux";
 import AppLogo from "@/src/components/molecules/AppLogo";
 import Item from "@/src/components/organisms/Sidebar/Item";
 import HelpCenter from "@/src/components/organisms/Sidebar/HelpCenter";
 
 const Sidebar = () => {
-  const dispatch = useDispatch();
-  const value = useSelector((state: RootState) => state.sidebar.value);
+  const [value, setValue] = useState<number>(0);
 
   const handleChangeSidebar = (value: number) => {
-    dispatch(updateSidebar(value));
+    setValue(value);
   };
 
   return (
