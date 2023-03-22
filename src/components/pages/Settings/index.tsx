@@ -59,9 +59,10 @@ const Settings = () => {
         </div>
 
         <Swiper
-          className="settings-page"
+          className="settings-page swiper-no-swiping"
           onSwiper={setSwiper}
           onSlideChange={handleSlideChange}
+          noSwipingClass="swiper-no-swiping"
         >
           <SwiperSlide key="1">
             <div className="text-secondary-500 mt-8">
