@@ -6,18 +6,15 @@ interface ItemProps {
   icon: ReactNode;
   active: boolean;
   to: string;
-  handleClick: (value: number) => void;
-  value: number;
 }
 
-const Item = ({ title, icon, active, to, handleClick, value }: ItemProps) => {
+const Item = ({ title, icon, active, to }: ItemProps) => {
   return (
     <Link to={to}>
       <div
         className={`flex gap-x-3 px-[20px] py-[10px] items-center rounded-[10px] hover:bg-[#F5F5F7] ${
           active ? "bg-[#F5F5F7]" : ""
         }`}
-        onClick={() => handleClick(value)}
       >
         {icon}
         <p
