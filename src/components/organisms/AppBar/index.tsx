@@ -1,9 +1,12 @@
 import { useRef } from "react";
 import Sort from "@/src/assets/icons/Sort";
 import Search from "@/src/assets/icons/Search";
-import Input from "@/src/components/atoms/Input"
+import Input from "@/src/components/atoms/Input";
 import Category from "@/src/assets/icons/Category";
 import UserAction from "@/src/components/molecules/UserAction";
+import HamburgerMenu from "@/src/assets/icons/HamburgerMenu";
+import { useDispatch} from "react-redux";
+import { updateShowSidebar } from "@/src/global/app";
 
 interface AppBarProps {
   title: string;
@@ -11,13 +14,22 @@ interface AppBarProps {
   userImg: string;
   withSearch?: boolean;
   notificationActive: boolean;
-  placeholder?: string
+  placeholder?: string;
 }
 
 const AppBar = (props: AppBarProps) => {
-  const { title, description, userImg, withSearch, notificationActive, placeholder } = props;
+  const {
+    title,
+    description,
+    userImg,
+    withSearch,
+    notificationActive,
+    placeholder,
+  } = props;
 
-  const inputEl = useRef<HTMLInputElement>(null)
+  const dispatch = useDispatch();
+
+  const inputEl = useRef<HTMLInputElement>(null);
 
   return (
     <>
@@ -33,16 +45,25 @@ const AppBar = (props: AppBarProps) => {
               </h3>
             )}
           </div>
+          <button
+            onClick={() => dispatch(updateShowSidebar(true))}
+            className="xl:hidden"
+          >
+            <HamburgerMenu />
+          </button>
         </div>
         <UserAction notificationActive={notificationActive} userImg={userImg} />
       </div>
       {withSearch && (
         <div className="flex justify-between items-center mt-6">
           <div className="w-full max-w-[480px]">
-            <Input  
+            <Input
               placeholder={placeholder as string}
               inputAdorment={
-                <div className="cursor-pointer" onClick={() => inputEl.current?.focus()}>
+                <div
+                  className="cursor-pointer"
+                  onClick={() => inputEl.current?.focus()}
+                >
                   <Search />
                 </div>
               }
@@ -54,11 +75,15 @@ const AppBar = (props: AppBarProps) => {
           <div className="w-full max-w-[368px] flex items-center justify-between">
             <div className="flex items-center justify-between gap-x-[12px] px-7 py-[14px] rounded-default border-[1px] border-solid cursor-pointer border-[#F5F5F7]">
               <Category />
-              <p className="text-xs font-semibold text-secondary-500">Category</p>
+              <p className="text-xs font-semibold text-secondary-500">
+                Category
+              </p>
             </div>
             <div className="flex items-center justify-between gap-x-[12px] px-7 py-[14px] rounded-default border-[1px] border-solid cursor-pointer border-[#F5F5F7]">
               <Sort />
-              <p className="text-xs font-semibold text-secondary-500">Sort By: Deadline</p>
+              <p className="text-xs font-semibold text-secondary-500">
+                Sort By: Deadline
+              </p>
             </div>
           </div>
         </div>
