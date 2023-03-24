@@ -1,9 +1,23 @@
+import AppBar from "../../organisms/AppBar";
+
 const Messages = () => {
   return (
-    <div className="xl:ml-[252px] min-h-screen flex justify-center items-center bg-[#FAFAFA]">
-      <p className="text-4xl font-semibold text-secondary-500">Coming Soon :)</p>
+    <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen flex flex-col">
+      <nav className="bg-primary-0 p-8 w-full">
+        <AppBar
+          title="Message"
+          userImg={"/profile.png"}
+          notificationActive={true}
+          placeholder="Search Mentors"
+        />
+      </nav>
+      <div className="flex justify-center items-center flex-grow">
+        <p className="text-4xl font-semibold text-secondary-500">
+          Coming Soon :)
+        </p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Messages
+export default Messages;

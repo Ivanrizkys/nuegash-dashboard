@@ -1,68 +1,72 @@
-import { useEffect } from "react";
-import { updateSidebar } from "./store";
+import { useCallback } from "react";
 import Task from "@/src/assets/icons/Task";
 import Mentor from "@/src/assets/icons/Mentor";
-import { RootState } from "@/src/global/store";
 import Message from "@/src/assets/icons/Message";
 import Setting from "@/src/assets/icons/Setting";
 import Overview from "@/src/assets/icons/Overview";
-import { useDispatch, useSelector } from "react-redux";
 import AppLogo from "@/src/components/molecules/AppLogo";
 import Item from "@/src/components/organisms/Sidebar/Item";
 import HelpCenter from "@/src/components/organisms/Sidebar/HelpCenter";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/src/global/store";
+import { useLocation } from "react-router-dom";
+import { updateShowSidebar } from "@/src/global/app";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const value = useSelector((state: RootState) => state.sidebar.value);
+  const { pathname } = useLocation();
+  const { showSidebar, screenWidth } = useSelector(
+    (state: RootState) => state.app
+  );
 
-  const handleChangeSidebar = (value: number) => {
-    dispatch(updateSidebar(value));
-  };
+  const handleItemClick = useCallback(() => {
+    if (screenWidth < 1280) {
+      dispatch(updateShowSidebar(false));
+    }
+  }, [screenWidth]);
 
   return (
-    <div className="fixed top-0 -left-[252px] xl:left-0 w-[252px] bg-primary-0 transition-[left] duration-500 z-20">
+    <div
+      style={{ left: showSidebar ? "0" : "-252px" }}
+      className="fixed top-0 bg-primary-0 w-[252px] transition-[left] duration-500 z-30"
+    >
       <div className="relative h-screen box-border z-10 p-8">
         <AppLogo />
         <div className="pt-[60px] flex flex-col gap-y-6">
           <Item
             title="Overview"
-            active={value === 1}
-            icon={<Overview active={value === 1} />}
+            active={pathname === "/"}
+            icon={<Overview active={pathname === "/"} />}
             to="/"
-            handleClick={handleChangeSidebar}
-            value={1}
+            onClick={handleItemClick}
           />
           <Item
             title="Task"
-            active={value === 2}
-            icon={<Task active={value === 2} />}
+            active={pathname.includes("/tasks")}
+            icon={<Task active={pathname.includes("/tasks")} />}
             to="/tasks"
-            handleClick={handleChangeSidebar}
-            value={2}
+            onClick={handleItemClick}
           />
           <Item
             title="Mentors"
-            active={value === 3}
-            icon={<Mentor active={value === 3} />}
+            active={pathname.includes("/mentors")}
+            icon={<Mentor active={pathname.includes("/mentors")} />}
             to="/mentors"
-            handleClick={handleChangeSidebar}
-            value={3}
+            onClick={handleItemClick}
           />
           <Item
             title="Message"
-            active={value === 4}
-            icon={<Message active={value === 4} />}
+            active={pathname.includes("/messages")}
+            icon={<Message active={pathname.includes("/messages")} />}
             to="/messages"
-            handleClick={handleChangeSidebar}
-            value={4}
+            onClick={handleItemClick}
           />
           <Item
             title="Settings"
-            active={value === 5}
-            icon={<Setting active={value === 5} />}
+            active={pathname.includes("/settings")}
+            icon={<Setting active={pathname.includes("/settings")} />}
             to="/settings"
-            handleClick={handleChangeSidebar}
-            value={5}
+            onClick={handleItemClick}
           />
         </div>
       </div>

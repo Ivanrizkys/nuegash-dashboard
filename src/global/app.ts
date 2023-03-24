@@ -8,10 +8,14 @@ export enum ThemeAppEnum {
 
 export interface AppState {
   theme: ThemeAppEnum;
+  screenWidth: number;
+  showSidebar: boolean;
 }
 
 const initialState: AppState = {
   theme: ThemeAppEnum.LIGHT,
+  screenWidth: 0,
+  showSidebar: true
 };
 
 export const appSlice = createSlice({
@@ -21,8 +25,14 @@ export const appSlice = createSlice({
     updateThemeApp: (state, action: PayloadAction<ThemeAppEnum>) => {
       state.theme = action.payload;
     },
+    updateScreenWidth: (state, action: PayloadAction<number>) => {
+      state.screenWidth = action.payload
+    },
+    updateShowSidebar: (state, action: PayloadAction<boolean>) => {
+      state.showSidebar = action.payload
+    }
   },
 });
 
-export const { updateThemeApp } = appSlice.actions;
+export const { updateThemeApp, updateScreenWidth, updateShowSidebar } = appSlice.actions;
 export default appSlice.reducer;
