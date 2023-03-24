@@ -1,6 +1,7 @@
 import { useId } from "react";
 import Clock from "@/src/assets/icons/Clock";
 import LinearMore from "@/src/assets/icons/LinearMore";
+import Button from "../../atoms/Button";
 
 interface TaskTodayProps {
   image: string;
@@ -90,9 +91,11 @@ const TaskToday = (props: TaskTodayProps) => {
         </div>
         <p className="font-medium">Design a mobile application with figma</p>
       </div>
-      <button className="bg-primary-500 hover:bg-primary-600 rounded-default py-3 w-full font-semibold text-primary-0 text-sm transition-colors duration-300 mt-14">
-        Go To Detail
-      </button>
+      <div className="mt-14">
+        <Button buttonFull type="button">
+          Go To Detail
+        </Button>
+      </div>
     </div>
   );
 };
