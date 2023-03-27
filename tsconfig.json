@@ -20,6 +20,7 @@
       "@/src/global/*": ["src/global/*"],
       "@/src/assets/*": ["src/assets/*"],
       "@/src/components/atoms/*": ["src/components/atoms/*"],
+      "@/src/components/hoc/*": ["src/components/hoc/*"],
       "@/src/components/molecules/*": ["src/components/molecules/*"],
       "@/src/components/organisms/*": ["src/components/organisms/*"],
       "@/src/components/pages/*": ["src/components/pages/*"],
@@ -29,7 +30,7 @@
       "@/src/routes/*": ["src/routes/*"],
       "@/src/store/*": ["src/store/*"],
       "@/src/utils/*": ["src/utils/*"],
-      "@/src/styles/*": ["src/styles/*"]
+      "@/src/styles/*": ["src/styles/*"],
     }
   },
   "include": ["src"],

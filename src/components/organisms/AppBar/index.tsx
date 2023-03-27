@@ -1,12 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Sort from "@/src/assets/icons/Sort";
 import Search from "@/src/assets/icons/Search";
 import Input from "@/src/components/atoms/Input";
 import Category from "@/src/assets/icons/Category";
 import UserAction from "@/src/components/molecules/UserAction";
 import HamburgerMenu from "@/src/assets/icons/HamburgerMenu";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateShowSidebar } from "@/src/global/app";
+import SelectAdorment, { Option } from "@/src/components/atoms/SelectAdorment";
 
 interface AppBarProps {
   title: string;
@@ -26,6 +27,8 @@ const AppBar = (props: AppBarProps) => {
     notificationActive,
     placeholder,
   } = props;
+
+  const [category, setCategory] = useState("");
 
   const dispatch = useDispatch();
 
@@ -72,19 +75,27 @@ const AppBar = (props: AppBarProps) => {
               type="text"
             />
           </div>
-          <div className="w-full max-w-[368px] flex items-center justify-between">
-            <div className="flex items-center justify-between gap-x-[12px] px-7 py-[14px] rounded-default border-[1px] border-solid cursor-pointer border-[#F5F5F7]">
-              <Category />
-              <p className="text-xs font-semibold text-secondary-500">
-                Category
-              </p>
-            </div>
-            <div className="flex items-center justify-between gap-x-[12px] px-7 py-[14px] rounded-default border-[1px] border-solid cursor-pointer border-[#F5F5F7]">
-              <Sort />
-              <p className="text-xs font-semibold text-secondary-500">
-                Sort By: Deadline
-              </p>
-            </div>
+          <div className="w-full max-w-[368px] hidden lg:flex items-center justify-between">
+            <SelectAdorment
+              defaultText="Category"
+              setValue={setCategory}
+              icon={<Category />}
+            >
+              <Option value="">Category</Option>
+              <Option value="upcoming">Upcoming</Option>
+              <Option value="done">Done</Option>
+              <Option value="invalid">Invalid</Option>
+            </SelectAdorment>
+            <SelectAdorment
+              placeholder="Sort By:"
+              defaultText="Deadline"
+              setValue={setCategory}
+              icon={<Sort />}
+            >
+              <Option value="deadline">Deadline</Option>
+              <Option value="assigment">Assigment</Option>
+              <Option value="progress">Progress</Option>
+            </SelectAdorment>
           </div>
         </div>
       )}
