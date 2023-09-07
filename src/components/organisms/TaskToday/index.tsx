@@ -12,6 +12,7 @@ interface TaskTodayProps {
   contributor: Array<{
     image: string;
   }>;
+  assessments: Array<string>
 }
 
 const TaskToday = (props: TaskTodayProps) => {

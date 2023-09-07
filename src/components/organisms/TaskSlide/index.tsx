@@ -10,21 +10,20 @@ import { SwiperContainer } from "@/src/styles/index";
 interface TaskSlideProps {
   title: string;
   swiperClass: string;
-  // tasks: Array<{
-  //   id: string
-  //   image: string
-  //   role: string
-  //   title: string
-  //   progress: number
-  //   timeRemaining: Date
-  //   contributors: Array<{
-  //     id: string
-  //     image: string
-  //   }>
-  // }>
+  tasks: Array<{
+    id: string
+    image: string
+    role: string
+    title: string
+    progress: number
+    timeRemaining: Date
+    contributors: Array<{
+      image: string
+    }>
+  }>
 }
 
-const TaskSlide = ({ title, swiperClass }: TaskSlideProps) => {
+const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
   return (
     <div className="text-secondary-500">
       <div className="flex items-center justify-between">
@@ -50,25 +49,15 @@ const TaskSlide = ({ title, swiperClass }: TaskSlideProps) => {
             slidesPerView={"auto"}
             spaceBetween={32}
           >
-            {[0, 1, 2, 3, 4, 5].map((value) => (
+            {tasks.map((task) => (
               <SwiperSlide key={useId()}>
                 <CardTask
-                  image="https://res.cloudinary.com/draaoe7rc/image/upload/v1672716464/nuegas/task/task-6_pjmc3s.png"
-                  title="Creating Mobile App Design"
-                  role="UI UX Design"
-                  progress={15}
+                  image={task?.image}
+                  title={task?.title}
+                  role={task?.role}
+                  progress={task?.progress}
                   timeRemaining="3 Days Left"
-                  contributor={[
-                    {
-                      image: "https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-1_io3lzd.png",
-                    },
-                    {
-                      image: "https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-5_oecy53.png",
-                    },
-                    {
-                      image: "https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-3_m4cy4u.png",
-                    },
-                  ]}
+                  contributor={task?.contributors}
                 />
               </SwiperSlide>
             ))}
