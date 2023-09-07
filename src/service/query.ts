@@ -113,3 +113,42 @@ export const GET_TASK_DATA = graphql(`
     }
   }
 `)
+
+export const GET_MENTORS_DATA = graphql(`
+  query getMentorsData {
+    recentMentors: mentorsCollection(orderBy: {created_at: DescNullsLast}) {
+      edges {
+        cursor
+        node {
+          id
+          name
+          role
+          image
+          total_task
+          rating
+          total_review
+          is_followed
+          description
+          created_at
+        }
+      }
+    }
+    mentors: mentorsCollection(orderBy: {id: AscNullsLast}) {
+      edges {
+        cursor
+        node {
+          id
+          name
+          role
+          image
+          total_task
+          rating
+          total_review
+          is_followed
+          description
+          created_at
+        }
+      }
+    }
+  }
+`)
