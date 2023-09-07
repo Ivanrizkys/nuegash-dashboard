@@ -1,8 +1,13 @@
 import AppBar from "@/src/components/organisms/AppBar"
 import MentorSlide from "@/src/components/organisms/MentorSlide";
 import CardMentor from "@/src/components/molecules/CardMentor"
+import { useQuery } from "@apollo/client";
+import { GET_MENTORS_DATA } from "@/src/service/query";
 
 const Task = () => {
+  const { data } = useQuery(GET_MENTORS_DATA)
+  
+
   return (
     <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen">
       <nav className="bg-primary-0 p-8 w-full">
@@ -16,24 +21,36 @@ const Task = () => {
       </nav>
       <div className="p-8">
         <section>
-          <MentorSlide
-            title="Recent Mentors"
-            swiperClass="recent-mentors-list"
-          />
+          {data?.recentMentors && 
+            <MentorSlide
+              title="Recent Mentors"
+              swiperClass="recent-mentors-list"
+              mentors={data?.recentMentors?.edges.map((mentor) => ({
+                id: mentor?.node?.id as string,
+                name: mentor?.node?.name ?? "",
+                role: mentor?.node?.role ?? "",
+                avatar: mentor?.node?.image ?? "",
+                rating: mentor?.node?.rating as number,
+                task: mentor?.node?.total_task ?? 0,
+                review: mentor?.node?.total_review ?? 0,
+                isFollowed: mentor?.node?.is_followed ?? false
+              }))}
+            />
+          }
         </section>
         <section className="mt-8">
           <h2 className="text-2xl font-semibold text-secondary-500 mb-[18px]">Mentors</h2>
           <div className="grid grid-cols-[repeat(auto-fit,_minmax(352px,_1fr))] gap-8">
-            {[1,2,3,4,5,6,7,8].map(() => (
+            {data?.mentors && data?.mentors?.edges.map((mentor) => (
               <CardMentor 
-                name="Cika Febriana Putri"
-                role="UI UX Design"
-                task={40}
-                rating={4.7}
-                review={750}
-                avatar="https://res.cloudinary.com/draaoe7rc/image/upload/v1672717941/nuegas/mentor/mentor-scale-2_layncm.png "
-                isFollowed={false}
-                description="Hi, I'm Cika Febriana Putri. I'm an Android Developer at Google company . . ."
+                name={mentor?.node?.name ?? ""}
+                role={mentor?.node?.role ?? ""}
+                task={mentor?.node?.total_task ?? 0}
+                rating={mentor?.node?.rating as number}
+                review={mentor?.node?.total_review ?? 0}
+                avatar={mentor?.node?.image ?? ""}
+                isFollowed={mentor?.node?.is_followed ?? false}
+                description={mentor?.node?.description ?? ""}
               />
             ))}
           </div>
