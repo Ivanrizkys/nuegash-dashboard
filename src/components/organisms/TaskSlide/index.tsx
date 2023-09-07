@@ -11,16 +11,17 @@ interface TaskSlideProps {
   title: string;
   swiperClass: string;
   tasks: Array<{
-    id: string
-    image: string
-    role: string
-    title: string
-    progress: number
-    timeRemaining: Date
+    id: string;
+    image: string;
+    imageHash: string;
+    role: string;
+    title: string;
+    progress: number;
+    timeRemaining: Date;
     contributors: Array<{
-      image: string
-    }>
-  }>
+      image: string;
+    }>;
+  }>;
 }
 
 const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
@@ -58,6 +59,7 @@ const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
                   progress={task?.progress}
                   timeRemaining="3 Days Left"
                   contributor={task?.contributors}
+                  imageHash={task?.imageHash}
                 />
               </SwiperSlide>
             ))}

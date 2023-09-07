@@ -7,10 +7,13 @@ import { useCallback } from "react"
 import FileSubmission from "@/src/assets/icons/FileSubmission"
 import { DropzoneContainer } from "./custom"
 import VideoPlayer from "../../molecules/VideoPlayer"
+import { useParams } from "react-router-dom"
 
 const TaskDetail = () => {
+  const params = useParams()
+  console.log("ini param", params)
+  
   const onDrop = useCallback((aceptedFiles: File[]) => {
-    console.log("ini halan mas")
     console.log(aceptedFiles)
   }, [])
   

@@ -1,10 +1,13 @@
-import { useId } from "react";
+import { useEffect, useId, useState } from "react";
 import Clock from "@/src/assets/icons/Clock";
 import LinearMore from "@/src/assets/icons/LinearMore";
 import Button from "../../atoms/Button";
+import { Blurhash } from "react-blurhash";
+import useImageLoader from "@/src/hooks/useImageLoader";
 
 interface TaskTodayProps {
   image: string;
+  imageHash: string;
   title: string;
   role: string;
   progress: number;
@@ -16,9 +19,10 @@ interface TaskTodayProps {
 }
 
 const TaskToday = (props: TaskTodayProps) => {
-  const { image, title, role, progress, timeRemaining, contributor } = props;
+  const { image, imageHash, title, role, progress, timeRemaining, contributor } = props;
 
   const id = useId();
+  const imageLoaded = useImageLoader(image)
 
   return (
     <div className="w-full bg-primary-0 text-secondary-500 rounded-default p-6">
@@ -29,6 +33,16 @@ const TaskToday = (props: TaskTodayProps) => {
         </div>
       </div>
       <div className="w-full h-[110px] overflow-hidden rounded-default">
+        {!imageLoaded &&
+          <Blurhash
+            hash={imageHash}
+            width={"100%"}
+            height={"100%"}
+            resolutionX={32}
+            resolutionY={32}
+            punch={1}
+          />
+        }
         <img
           src={image}
           alt={`img-${id}`}

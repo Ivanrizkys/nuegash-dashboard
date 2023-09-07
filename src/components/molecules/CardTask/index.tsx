@@ -1,9 +1,12 @@
 import Clock from "@/src/assets/icons/Clock";
+import useImageLoader from "@/src/hooks/useImageLoader";
 import { useId } from "react";
+import { Blurhash } from "react-blurhash";
 import { Link } from "react-router-dom";
 
 interface CardTaskProps {
   image: string;
+  imageHash: string;
   title: string;
   role: string;
   progress: number;
@@ -14,14 +17,25 @@ interface CardTaskProps {
 }
 
 const CardTask = (props: CardTaskProps) => {
-  const { image, title, role, progress, timeRemaining, contributor } = props;
+  const { image, imageHash, title, role, progress, timeRemaining, contributor } = props;
 
   const id = useId();
+  const imageLoaded = useImageLoader(image)
 
   return (
     <Link to={`/tasks/task-detail`}>
       <div className="w-full max-w-[328px] min-w-[327px] bg-primary-0 text-secondary-500 rounded-default cursor-pointer group p-6 ">
         <div className="w-full h-[110px] overflow-hidden rounded-default">
+          {!imageLoaded &&
+            <Blurhash
+              hash={imageHash}
+              width={"100%"}
+              height={"100%"}
+              resolutionX={32}
+              resolutionY={32}
+              punch={1}
+            />
+          }
           <img
             src={image}
             alt={`img-${id}`}

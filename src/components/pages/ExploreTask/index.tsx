@@ -15,6 +15,7 @@ const ExploreTask = () => {
             tasks={data?.theLimit?.edges.map((task) => ({
               id: task?.node?.id as string,
               image: task?.node?.image ?? "",
+              imageHash: task?.node?.image_hash,
               role: task?.node?.task_categories?.name ?? "",
               title: task?.node?.title ?? "",
               progress: task?.node?.progress ?? 0,
@@ -36,6 +37,7 @@ const ExploreTask = () => {
             tasks={data?.newTask?.edges.map((task) => ({
               id: task?.node?.id as string,
               image: task?.node?.image ?? "",
+              imageHash: task?.node?.image_hash,
               role: task?.node?.task_categories?.name ?? "",
               title: task?.node?.title ?? "",
               progress: task?.node?.progress ?? 0,

@@ -95,6 +95,7 @@ const Dashboard = () => {
               tasks={data?.tasksCollection?.edges.map((task) => ({
                 id: task?.node?.id as string,
                 image: task?.node?.image ?? "",
+                imageHash: task?.node?.image_hash,
                 role: task?.node?.task_categories?.name ?? "",
                 title: task?.node?.title ?? "",
                 progress: task?.node?.progress ?? 0,
@@ -114,6 +115,7 @@ const Dashboard = () => {
         {data?.taskToday && 
           <TaskToday
             image={data?.taskToday?.edges[0]?.node?.image ?? ""}
+            imageHash={data?.taskToday?.edges[0]?.node?.image_hash}
             title={data?.taskToday?.edges[0]?.node?.title ?? ""}
             role={data?.taskToday?.edges[0]?.node?.task_categories?.name ?? ""}
             progress={data?.taskToday?.edges[0]?.node?.progress ?? 0}
