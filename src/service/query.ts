@@ -16,6 +16,7 @@ export const GET_OVERVIEW_DATA = graphql(`
           task_categories {
             name
           }
+          image_hash
         }
       }
     }
@@ -51,6 +52,7 @@ export const GET_OVERVIEW_DATA = graphql(`
             name
           }
           assessment
+          image_hash
         }
       }
     }
@@ -91,6 +93,7 @@ export const GET_TASK_DATA = graphql(`
           task_categories {
             name
           }
+          image_hash
         }
       }
     }
@@ -108,6 +111,7 @@ export const GET_TASK_DATA = graphql(`
           task_categories {
             name
           }
+          image_hash
         }
       }
     }
