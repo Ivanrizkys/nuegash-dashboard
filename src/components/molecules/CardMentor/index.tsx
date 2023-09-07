@@ -41,7 +41,7 @@ const CardMentor = (props: CardMentorProps) => {
         </p>
       </div>
       {description && (
-        <p className="text-sm font-medium text-secondary-300 my-6">{description}</p>
+        <p className="text-sm font-medium text-secondary-300 my-6 limit-3-text">{description}</p>
       )}
       <div className="flex items-center justify-between text-sm font-medium mt-5">
         <div className="flex items-center">
