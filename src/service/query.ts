@@ -74,3 +74,42 @@ export const GET_OVERVIEW_DATA = graphql(`
     }
   }
 `)
+
+export const GET_TASK_DATA = graphql(`
+  query getTaskData {
+    theLimit: tasksCollection(orderBy: {progress: DescNullsLast}) {
+      edges {
+        cursor
+        node {
+          id
+          title
+          cateogry
+          mentors
+          image
+          progress
+          end_at
+          task_categories {
+            name
+          }
+        }
+      }
+    }
+    newTask: tasksCollection(orderBy: {id: AscNullsLast}) {
+      edges {
+        cursor
+        node {
+          id
+          title
+          cateogry
+          mentors
+          image
+          progress
+          end_at
+          task_categories {
+            name
+          }
+        }
+      }
+    }
+  }
+`)
