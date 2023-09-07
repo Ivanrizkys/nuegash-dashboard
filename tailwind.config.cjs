@@ -1,3 +1,4 @@
+const plugin = require('tailwindcss/plugin')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
@@ -70,5 +71,17 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [
+    plugin(({ addComponents }) => {
+      addComponents({
+        '.limit-3-text': {
+          overflow: 'hidden',
+          display: '-webkit-box',
+          '-webkit-line-clamp': '2',
+          'line-clamp': '2',
+          '-webkit-box-orient': 'vertical'
+        }
+      })
+    })
+  ]
 }
