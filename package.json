@@ -9,15 +9,16 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "codegen-generate": "graphql-code-generator --config ./src/config/codegen.ts"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.16",
+    "@apollo/client": "3.8.2",
     "@radix-ui/react-select": "^1.2.0",
     "@reduxjs/toolkit": "^1.8.5",
     "chart.js": "^4.1.2",
     "dayjs": "^1.11.7",
-    "graphql": "^16.7.1",
+    "graphql": "16.6.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-circular-progressbar": "^2.1.0",
