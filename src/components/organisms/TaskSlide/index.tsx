@@ -21,6 +21,7 @@ interface TaskSlideProps {
     contributors: Array<{
       image: string;
     }>;
+    slug: string;
   }>;
 }
 
@@ -60,6 +61,7 @@ const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
                   timeRemaining="3 Days Left"
                   contributor={task?.contributors}
                   imageHash={task?.imageHash}
+                  slug={task?.slug}
                 />
               </SwiperSlide>
             ))}

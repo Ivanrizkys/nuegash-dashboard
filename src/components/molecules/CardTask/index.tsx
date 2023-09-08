@@ -14,16 +14,17 @@ interface CardTaskProps {
   contributor: Array<{
     image: string;
   }>;
+  slug: string;
 }
 
 const CardTask = (props: CardTaskProps) => {
-  const { image, imageHash, title, role, progress, timeRemaining, contributor } = props;
+  const { image, imageHash, title, role, progress, timeRemaining, contributor, slug } = props;
 
   const id = useId();
   const imageLoaded = useImageLoader(image)
 
   return (
-    <Link to={`/tasks/task-detail`}>
+    <Link to={`/tasks/${slug}`}>
       <div className="w-full max-w-[328px] min-w-[327px] bg-primary-0 text-secondary-500 rounded-default cursor-pointer group p-6 ">
         <div className="w-full h-[110px] overflow-hidden rounded-default">
           {!imageLoaded &&

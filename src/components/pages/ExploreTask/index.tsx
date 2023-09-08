@@ -14,6 +14,7 @@ const ExploreTask = () => {
             swiperClass="the-limit"
             tasks={data?.theLimit?.edges.map((task) => ({
               id: task?.node?.id as string,
+              slug: task?.node?.slug,
               image: task?.node?.image ?? "",
               imageHash: task?.node?.image_hash,
               role: task?.node?.task_categories?.name ?? "",
@@ -36,6 +37,7 @@ const ExploreTask = () => {
             swiperClass="new-task"
             tasks={data?.newTask?.edges.map((task) => ({
               id: task?.node?.id as string,
+              slug: task?.node?.slug,
               image: task?.node?.image ?? "",
               imageHash: task?.node?.image_hash,
               role: task?.node?.task_categories?.name ?? "",

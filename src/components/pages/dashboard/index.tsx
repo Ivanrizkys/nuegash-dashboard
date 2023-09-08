@@ -94,6 +94,7 @@ const Dashboard = () => {
               swiperClass="upcoming-task-list"
               tasks={data?.tasksCollection?.edges.map((task) => ({
                 id: task?.node?.id as string,
+                slug: task?.node?.slug,
                 image: task?.node?.image ?? "",
                 imageHash: task?.node?.image_hash,
                 role: task?.node?.task_categories?.name ?? "",
@@ -124,6 +125,7 @@ const Dashboard = () => {
               image
             }))}
             assessments={JSON.parse(data?.taskToday?.edges[0]?.node?.assessment)}
+            slug={data?.taskToday?.edges[0]?.node?.slug}
           />
         }
       </div>

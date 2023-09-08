@@ -4,6 +4,7 @@ import LinearMore from "@/src/assets/icons/LinearMore";
 import Button from "../../atoms/Button";
 import { Blurhash } from "react-blurhash";
 import useImageLoader from "@/src/hooks/useImageLoader";
+import { useNavigate } from "react-router-dom";
 
 interface TaskTodayProps {
   image: string;
@@ -16,12 +17,14 @@ interface TaskTodayProps {
     image: string;
   }>;
   assessments: Array<string>
+  slug: string;
 }
 
 const TaskToday = (props: TaskTodayProps) => {
-  const { image, imageHash, title, role, progress, timeRemaining, contributor } = props;
+  const { image, imageHash, title, role, progress, timeRemaining, contributor, slug } = props;
 
   const id = useId();
+  const navigate = useNavigate()
   const imageLoaded = useImageLoader(image)
 
   return (
@@ -107,7 +110,11 @@ const TaskToday = (props: TaskTodayProps) => {
         <p className="font-medium">Design a mobile application with figma</p>
       </div>
       <div className="mt-14">
-        <Button buttonFull type="button">
+        <Button 
+          buttonFull 
+          type="button"
+          onClick={() => navigate(`/tasks/${slug}`)}
+        >
           Go To Detail
         </Button>
       </div>
