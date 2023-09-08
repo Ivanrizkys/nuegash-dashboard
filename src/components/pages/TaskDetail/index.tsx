@@ -8,10 +8,17 @@ import FileSubmission from "@/src/assets/icons/FileSubmission"
 import { DropzoneContainer } from "./custom"
 import VideoPlayer from "../../molecules/VideoPlayer"
 import { useParams } from "react-router-dom"
+import { useQuery } from "@apollo/client"
+import { GET_TASK_DETAIL } from "@/src/service/query"
 
 const TaskDetail = () => {
   const params = useParams()
-  console.log("ini param", params)
+
+  const { data } = useQuery(GET_TASK_DETAIL, {
+    variables: {
+      slug: params.slug
+    }
+  })
   
   const onDrop = useCallback((aceptedFiles: File[]) => {
     console.log(aceptedFiles)
@@ -25,51 +32,41 @@ const TaskDetail = () => {
   return (
       <div className="flex flex-col min-[850px]:flex-row gap-x-6 gap-y-6 min-[900px]:gap-x-8 p-6 min-[900px]:p-8">
         <div className="w-full min-[850px]:w-8/12 bg-primary-0 rounded-default">
-          <VideoPlayer src="https://www.youtube.com/watch?v=f3nfVH1QiRA" />
+          {data?.taskDetail && <VideoPlayer src={data?.taskDetail?.edges[0]?.node?.video} />}
           <div className="p-6 text-secondary-500">
-            <h2 className="font-semibold text-[32px]">Creating Awesome Mobile Apps</h2>
+            <h2 className="font-semibold text-[32px]">{data?.taskDetail?.edges[0]?.node?.title}</h2>
             <div className="flex items-center my-4 text-sm font-medium">
-              <p className="text-secondary-400">UI UX Design .Apps Design</p>
+              <p className="text-secondary-400">{data?.taskDetail?.edges[0]?.node?.task_categories?.name}</p>
               <div className="h-[28px] w-[1px] bg-[#DFDFDF] mx-[10px] rounded-[20px]"></div>
               <p className="text-[#04A4F4] cursor-pointer">+Get Mentors</p>
             </div>
             <div className="flex items-center gap-x-5 font-medium text-sm">
               <div className="flex items-center gap-x-[5px]">
                 <People />
-                <p>200 Students Involved</p>
+                <p>{data?.taskDetail?.edges[0]?.node?.registered_student} Students Involved</p>
               </div>
               <div className="flex items-center gap-x-[5px]">
                 <Clock variant="small" />
-                <p>1 Hour</p>
+                <p>{data?.taskDetail?.edges[0]?.node?.total_hour} Hour</p>
               </div>
             </div>
             <h3 className="text-2xl font-semibold mt-[31px] mb-4">Description</h3>
-            <p className="text-sm">Follow the video tutorial above. Understand how to use each tool in the Figma application. Also learn how to make a good and correct design. Starting from spacing, typography, content, and many other design hierarchies. Then try to make it yourself with your imagination and inspiration.</p>
+            <p className="text-sm">{data?.taskDetail?.edges[0]?.node?.description}</p>
             <h3 className="text-2xl font-semibold mt-6 mb-4">Essence of Assessment</h3>
             <div className="flex flex-col gap-y-5">
-              <div className="flex items-center gap-x-[10px]">
-                <Check />
-                <p className="text-secondary-500 text-sm">Understanding the tools in Figma</p>
-              </div>
-              <div className="flex items-center gap-x-[10px]">
-                <Check />
-                <p className="text-secondary-500 text-sm">Understand the basics of making designs</p>
-              </div>
-              <div className="flex items-center gap-x-[10px]">
-                <Check />
-                <p className="text-secondary-500 text-sm">Designing a mobile application using figma</p>
-              </div>
-              <div className="flex items-center gap-x-[10px]">
-                <Check />
-                <p className="text-secondary-500 text-sm">Presenting the design flow</p>
-              </div>
+              {data?.taskDetail && JSON.parse(data?.taskDetail?.edges[0]?.node?.assessment)?.map((val: string) => (
+                <div className="flex items-center gap-x-[10px]" key={Math.random()}>
+                  <Check />
+                  <p className="text-secondary-500 text-sm">{val}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="w-full min-[850px]:w-4/12 bg-primary-0 rounded-default p-6 text-secondary-500">
           <h4 className="text-sm font-semibold mb-6">Assigned Assignments</h4>
-          <h2 className="text-2xl font-semibold mb-3">Creating Awesome Mobile Apps</h2>
-          <p className="text-sm font-medium text-secondary-400">UIUX Design .Apps Design</p>
+          <h2 className="text-2xl font-semibold mb-3">{data?.taskDetail?.edges[0]?.node?.title}</h2>
+          <p className="text-sm font-medium text-secondary-400">{data?.taskDetail?.edges[0]?.node?.task_categories?.name}</p>
           <h4 className="font-semibold text-xl mt-6 mb-5">Detail Student</h4>
           <div className="flex flex-col gap-y-5">
             <div className="flex items-center justify-between">
