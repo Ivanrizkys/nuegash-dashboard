@@ -17,6 +17,7 @@ export const GET_OVERVIEW_DATA = graphql(`
             name
           }
           image_hash
+          slug
         }
       }
     }
@@ -53,6 +54,7 @@ export const GET_OVERVIEW_DATA = graphql(`
           }
           assessment
           image_hash
+          slug
         }
       }
     }
@@ -94,6 +96,7 @@ export const GET_TASK_DATA = graphql(`
             name
           }
           image_hash
+          slug
         }
       }
     }
@@ -112,6 +115,7 @@ export const GET_TASK_DATA = graphql(`
             name
           }
           image_hash
+          slug
         }
       }
     }
@@ -151,6 +155,29 @@ export const GET_MENTORS_DATA = graphql(`
           is_followed
           description
           created_at
+        }
+      }
+    }
+  }
+`)
+
+export const GET_TASK_DETAIL = graphql(`
+  query getTaskDetail ($slug: String) {
+    taskDetail: tasksCollection(first: 1, filter: {slug: {eq: $slug}}) {
+      edges {
+        cursor
+        node {
+          id
+          title
+          registered_student
+          total_hour
+          description
+          video
+          assessment
+          task_categories {
+            id
+            name
+          }
         }
       }
     }
