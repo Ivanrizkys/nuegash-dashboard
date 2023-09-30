@@ -5,6 +5,7 @@ import Button from "../../atoms/Button";
 import { Blurhash } from "react-blurhash";
 import useImageLoader from "@/src/hooks/useImageLoader";
 import { useNavigate } from "react-router-dom";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 interface TaskTodayProps {
   image: string;
@@ -27,6 +28,15 @@ const TaskToday = (props: TaskTodayProps) => {
   const navigate = useNavigate()
   const imageLoaded = useImageLoader(image)
 
+  const progressInitial = useMotionValue(0)
+  const progressResult = useTransform(progressInitial, Math.round)
+
+  useEffect(() => {
+    const animation = animate(progressInitial, progress, { duration: 0.6})
+
+    return animation.stop
+  })
+
   return (
     <div className="w-full bg-primary-0 text-secondary-500 rounded-default p-6">
       <div className="flex items-center justify-between mb-[20px]">
@@ -36,7 +46,12 @@ const TaskToday = (props: TaskTodayProps) => {
         </div>
       </div>
       <div className="w-full h-[110px] overflow-hidden rounded-default">
-        {!imageLoaded &&
+        <motion.div
+          initial={{ display: "block" }}
+          animate={{ display: imageLoaded ? "none" : "block"}}
+          transition={{ display: {delay: 0}}}
+          className="w-full h-full relative"
+        >
           <Blurhash
             hash={imageHash}
             width={"100%"}
@@ -45,26 +60,34 @@ const TaskToday = (props: TaskTodayProps) => {
             resolutionY={32}
             punch={1}
           />
-        }
-        <img
+        </motion.div>
+        <motion.img
           src={image}
+          initial={{ opacity: 0.5}}
+          animate={{ opacity: imageLoaded ? 1 : 0.5}}
+          transition={{opacity: { duration: 0.3 }}}
           alt={`img-${id}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 relative"
         />
       </div>
       <h4 className="text-base font-semibold mt-4">{title}</h4>
       <p className="text-secondary-400 text-xs font-medium mt-1">{role}</p>
       <div className="flex items-center justify-between text-base font-medium mt-4 mb-2">
         <p>Progress</p>
-        <p className="text-primary-500">{progress}%</p>
+        <p className="text-primary-500">
+            <motion.span>{progressResult}</motion.span>
+            <span>%</span>
+          </p>
       </div>
       <div className="h-2 bg-primary-200 rounded-lg">
-        <div
-          style={{ width: `${progress}%` }}
+        <motion.div
+          initial={{ width: 0}}
+          animate={{ width: `${progress}%`}}
+          transition={{width: {duration: 0.6}}}
           className="bg-primary-500 rounded-lg h-2 min-w-[16px] flex items-center justify-end"
         >
           <div className="w-4 h-4 border-2 border-solid border-primary-0 bg-primary-500 rounded-[50%]"></div>
-        </div>
+        </motion.div>
       </div>
       <div className="flex items-center justify-between mt-4">
         <div className="flex items-center gap-x-2">

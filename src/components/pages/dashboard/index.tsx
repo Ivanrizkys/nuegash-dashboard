@@ -1,6 +1,5 @@
 import "./custom.css";
 import "swiper/css/navigation";
-import "react-circular-progressbar/dist/styles.css";
 import AppBar from "@/src/components/organisms/AppBar";
 import TaskSlide from "@/src/components/organisms/TaskSlide";
 import TaskToday from "@/src/components/organisms/TaskToday";

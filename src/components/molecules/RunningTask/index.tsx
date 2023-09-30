@@ -1,41 +1,81 @@
 import { RunningTaskData } from "@/src/libs/dto/json";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { animate,useMotionValue, useTransform, motion, Variants } from "framer-motion";
+import { useEffect } from "react"
 
 interface RunningTaskProps extends RunningTaskData {}
 
 const RunningTask = (props: RunningTaskProps) => {
   const { total, percentage, onProgress } = props;
 
+  const taskInitial = useMotionValue(0)
+  const progressInitial = useMotionValue(0)
+  const percentageInitial = useMotionValue(0)
+  const taskResult = useTransform(taskInitial, Math.round)
+  const progressResult = useTransform(progressInitial, Math.round)
+  const percentageResult = useTransform(percentageInitial, Math.round)
+
+  useEffect(() => {
+    const taskAnimation = animate(taskInitial, total, { duration: 0.4 })
+    const progressAnimation = animate(progressInitial, onProgress, { duration: 0.4 })
+    const percentageAnimation = animate(percentageInitial, percentage, { duration: 0.4 })
+    
+    return progressAnimation.stop, taskAnimation.stop, percentageAnimation.stop
+  }, [])
+
+  const draw: Variants = {
+    hidden: { pathLength: 0, opacity: 0},
+    visible: (i) => {
+      const delay = 0
+      return {
+        pathLength: percentage / 100,
+        opacity: 1,
+        transition: {
+          pathLength: { delay, type: "spring", duration: 1.5, bounce: 0},
+          opacity: { delay, duration: 0.01}
+        }
+      }
+    }
+    
+  }
+  
   return (
     <div className="w-full md:min-w-[194px] md:w-2/12 bg-secondary-500 rounded-default p-[20px] text-primary-0 flex items-center justify-between min-[370px]:justify-around sm:flex-col sm:justify-start sm:items-start">
       <div className="font-semibold">
         <p className="text-base">Running Task</p>
-        <p className="text-[32px] my-4 text-center sm:text-left">{onProgress}</p>
+        <motion.p  className="text-[32px] my-4 text-center sm:text-left">{progressResult}</motion.p>
       </div>
       <div className="flex items-center gap-x-[18px]">
-        <div className="w-[99px] h-[99px] sm:w-[68px] sm:h-[68px]">
-          <CircularProgressbar
-            value={percentage}
-            text={`${percentage}%`}
-            styles={{
-              path: {
-                stroke: "#546FFF",
-                strokeWidth: "3px",
-              },
-              trail: {
-                stroke: "#1A1E38",
-                strokeWidth: "3px",
-              },
-              text: {
-                fill: "#FFFFFF",
-                fontSize: "18px",
-                fontWeight: "500",
-              },
-            }}
-          />
+        <div className="relative">
+          <motion.svg
+            width="100"
+            height="100"
+            viewBox="0 0 100 100"
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.circle
+              cx="50"
+              cy="50"
+              r="49"
+              stroke="#546FFF"
+              strokeWidth="3px"
+              variants={draw}
+              style={{ rotate: -90}}
+              // initial="hidden"
+              // animate="visible"
+            />
+          </motion.svg>
+          <p
+            className="top-1/2 left-1/2 absolute -translate-x-1/2 -translate-y-1/2 text-center text-lg font-medium"
+          >
+            <motion.span>{percentageResult}</motion.span>
+            <span>%</span>
+          </p>
         </div>
+
+
         <div>
-          <p className="text-xl font-semibold">{total}</p>
+          <motion.p className="text-xl font-semibold">{taskResult}</motion.p>
           <p className="text-sm font-medium">Task</p>
         </div>
       </div>
