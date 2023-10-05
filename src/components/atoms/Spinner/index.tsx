@@ -1,6 +1,6 @@
 const Spinner = () => {
     return (
-        <div>Ini sedang loading adik adik ...</div>
+        <div className="text-center font-bold text-7xl">Ini sedang loading adik adik ...</div>
     )
 }
 
