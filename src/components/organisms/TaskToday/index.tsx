@@ -1,10 +1,10 @@
-import { useEffect, useId, useState } from "react";
-import Clock from "@/src/assets/icons/Clock";
-import LinearMore from "@/src/assets/icons/LinearMore";
-import Button from "../../atoms/Button";
+import { useEffect, useId } from "react";
 import { Blurhash } from "react-blurhash";
-import useImageLoader from "@/src/hooks/useImageLoader";
+import Clock from "@/src/assets/icons/Clock";
 import { useNavigate } from "react-router-dom";
+import Button from "@/src/components/atoms/Button";
+import LinearMore from "@/src/assets/icons/LinearMore";
+import useImageLoader from "@/src/hooks/useImageLoader";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 interface TaskTodayProps {
@@ -17,25 +17,34 @@ interface TaskTodayProps {
   contributor: Array<{
     image: string;
   }>;
-  assessments: Array<string>
+  assessments: Array<string>;
   slug: string;
 }
 
 const TaskToday = (props: TaskTodayProps) => {
-  const { image, imageHash, title, role, progress, timeRemaining, contributor, slug } = props;
+  const {
+    image,
+    imageHash,
+    title,
+    role,
+    progress,
+    timeRemaining,
+    contributor,
+    slug,
+  } = props;
 
   const id = useId();
-  const navigate = useNavigate()
-  const imageLoaded = useImageLoader(image)
+  const navigate = useNavigate();
+  const imageLoaded = useImageLoader(image);
 
-  const progressInitial = useMotionValue(0)
-  const progressResult = useTransform(progressInitial, Math.round)
+  const progressInitial = useMotionValue(0);
+  const progressResult = useTransform(progressInitial, Math.round);
 
   useEffect(() => {
-    const animation = animate(progressInitial, progress, { duration: 0.6})
+    const animation = animate(progressInitial, progress, { duration: 1 });
 
-    return animation.stop
-  })
+    return animation.stop;
+  });
 
   return (
     <div className="w-full bg-primary-0 text-secondary-500 rounded-default p-6">
@@ -48,8 +57,8 @@ const TaskToday = (props: TaskTodayProps) => {
       <div className="w-full h-[110px] overflow-hidden rounded-default">
         <motion.div
           initial={{ display: "block" }}
-          animate={{ display: imageLoaded ? "none" : "block"}}
-          transition={{ display: {delay: 0}}}
+          animate={{ display: imageLoaded ? "none" : "block" }}
+          transition={{ display: { delay: 0 } }}
           className="w-full h-full relative"
         >
           <Blurhash
@@ -63,9 +72,9 @@ const TaskToday = (props: TaskTodayProps) => {
         </motion.div>
         <motion.img
           src={image}
-          initial={{ opacity: 0.5}}
-          animate={{ opacity: imageLoaded ? 1 : 0.5}}
-          transition={{opacity: { duration: 0.3 }}}
+          initial={{ opacity: 0.5 }}
+          animate={{ opacity: imageLoaded ? 1 : 0.5 }}
+          transition={{ opacity: { duration: 1 } }}
           alt={`img-${id}`}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 relative"
         />
@@ -75,15 +84,15 @@ const TaskToday = (props: TaskTodayProps) => {
       <div className="flex items-center justify-between text-base font-medium mt-4 mb-2">
         <p>Progress</p>
         <p className="text-primary-500">
-            <motion.span>{progressResult}</motion.span>
-            <span>%</span>
-          </p>
+          <motion.span>{progressResult}</motion.span>
+          <span>%</span>
+        </p>
       </div>
       <div className="h-2 bg-primary-200 rounded-lg">
         <motion.div
-          initial={{ width: 0}}
-          animate={{ width: `${progress}%`}}
-          transition={{width: {duration: 0.6}}}
+          initial={{ width: 0 }}
+          animate={{ width: `${progress}%` }}
+          transition={{ width: { duration: 1 } }}
           className="bg-primary-500 rounded-lg h-2 min-w-[16px] flex items-center justify-end"
         >
           <div className="w-4 h-4 border-2 border-solid border-primary-0 bg-primary-500 rounded-[50%]"></div>
@@ -133,8 +142,8 @@ const TaskToday = (props: TaskTodayProps) => {
         <p className="font-medium">Design a mobile application with figma</p>
       </div>
       <div className="mt-14">
-        <Button 
-          buttonFull 
+        <Button
+          buttonFull
           type="button"
           onClick={() => navigate(`/tasks/${slug}`)}
         >

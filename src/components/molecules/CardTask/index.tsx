@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
+import { useEffect, useId } from "react";
+import { Blurhash } from "react-blurhash";
 import Clock from "@/src/assets/icons/Clock";
 import useImageLoader from "@/src/hooks/useImageLoader";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
-import { useEffect, useId } from "react";
-import { Blurhash } from "react-blurhash";
-import { Link } from "react-router-dom";
 
 interface CardTaskProps {
   image: string;
@@ -19,19 +19,29 @@ interface CardTaskProps {
 }
 
 const CardTask = (props: CardTaskProps) => {
-  const { image, imageHash, title, role, progress, timeRemaining, contributor, slug } = props;
+  const {
+    image,
+    imageHash,
+    title,
+    role,
+    progress,
+    timeRemaining,
+    contributor,
+    slug,
+  } = props;
 
   const id = useId();
-  const imageLoaded = useImageLoader(image)
+  const imageLoaded = useImageLoader(image);
 
-  const progressInitial = useMotionValue(0)
-  const progressResult = useTransform(progressInitial, Math.round)
+  const progressInitial = useMotionValue(0);
+  const progressResult = useTransform(progressInitial, Math.round);
 
   useEffect(() => {
-    const animation = animate(progressInitial, progress, { duration: 0.6})
+    const animation = animate(progressInitial, progress, { duration: 1 });
 
-    return animation.stop
-  }), []
+    return animation.stop;
+  }),
+    [];
 
   return (
     <Link to={`/tasks/${slug}`}>
@@ -39,8 +49,8 @@ const CardTask = (props: CardTaskProps) => {
         <div className="w-full h-[110px] overflow-hidden rounded-default">
           <motion.div
             initial={{ display: "block" }}
-            animate={{ display: imageLoaded ? "none" : "block"}}
-            transition={{ display: {delay: 0}}}
+            animate={{ display: imageLoaded ? "none" : "block" }}
+            transition={{ display: { delay: 0 } }}
             className="w-full h-full relative"
           >
             <Blurhash
@@ -54,9 +64,9 @@ const CardTask = (props: CardTaskProps) => {
           </motion.div>
           <motion.img
             src={image}
-            initial={{ opacity: 0.5}}
-            animate={{ opacity: imageLoaded ? 1 : 0.5}}
-            transition={{opacity: { duration: 0.3 }}}
+            initial={{ opacity: 0.2 }}
+            animate={{ opacity: imageLoaded ? 1 : 0.5 }}
+            transition={{ opacity: { duration: 1 } }}
             alt={`img-${id}`}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 relative"
           />
@@ -72,9 +82,9 @@ const CardTask = (props: CardTaskProps) => {
         </div>
         <div className="h-2 bg-primary-200 rounded-lg">
           <motion.div
-            initial={{ width: 0}}
-            animate={{ width: `${progress}%`}}
-            transition={{width: {duration: 0.6}}}
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ width: { duration: 1 } }}
             className="bg-primary-500 rounded-lg h-2 min-w-[16px] flex items-center justify-end"
           >
             <div className="w-4 h-4 border-2 border-solid border-primary-0 bg-primary-500 rounded-[50%]"></div>
@@ -95,7 +105,11 @@ const CardTask = (props: CardTaskProps) => {
                     : "border-[1.5px] border-solid border-primary-0 -ml-1"
                 }`}
               >
-                <img src={image} alt={`image-${id}`} className="w-full h-full" />
+                <img
+                  src={image}
+                  alt={`image-${id}`}
+                  className="w-full h-full"
+                />
               </div>
             ))}
           </div>
