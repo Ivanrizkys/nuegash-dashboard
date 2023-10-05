@@ -10,9 +10,11 @@ module.exports = {
     },
     extend: {
       borderRadius: {
-        default: '10px'
+        default: '10px',
+        'skeleton-text': '20px'
       },
       colors: {
+        loader: '#540bff52',
         'primary-0': '#FFFFFF',
         'primary-100': '#DCE4FF',
         'primary-200': '#BAC8FF',
