@@ -1,23 +1,27 @@
-import React from "react"
+import React from "react";
 import { useRoutes } from "react-router-dom";
 
 // for auth
-const Login = React.lazy(() => import("@/src/components/pages/Login"))
+const Login = React.lazy(() => import("@/src/components/pages/Login"));
 
 // for dashboard content
-const Tasks = React.lazy(() => import("@/src/components/pages/Tasks"))
-const Mentors = React.lazy(() => import("@/src/components/pages/Mentors"))
-const Settings = React.lazy(() => import("@/src/components/pages/Settings"))
-const Dashboard = React.lazy(() => import("@/src/components/pages/dashboard"))
-const Messages = React.lazy(() => import("@/src/components/pages/Messages"))
-const TaskDetail = React.lazy(() => import("@/src/components/pages/TaskDetail"))
-const ExploreTask = React.lazy(() => import("@/src/components/pages/ExploreTask"))
+const TaskDetail = React.lazy(
+  () => import("@/src/components/pages/TaskDetail")
+);
+const ExploreTask = React.lazy(
+  () => import("@/src/components/pages/ExploreTask")
+);
+const Tasks = React.lazy(() => import("@/src/components/pages/Tasks"));
+const Mentors = React.lazy(() => import("@/src/components/pages/Mentors"));
+const Settings = React.lazy(() => import("@/src/components/pages/Settings"));
+const Messages = React.lazy(() => import("@/src/components/pages/Messages"));
+const Dashboard = React.lazy(() => import("@/src/components/pages/dashboard"));
 
 const Routes = () => {
   return useRoutes([
     {
       path: "/",
-      element: <Dashboard/>,
+      element: <Dashboard />,
     },
     {
       path: "/tasks",
@@ -25,35 +29,35 @@ const Routes = () => {
       children: [
         {
           path: ":slug",
-          element: <TaskDetail />
+          element: <TaskDetail />,
         },
         {
           path: "",
-          element: <ExploreTask />
-        }
-      ]
+          element: <ExploreTask />,
+        },
+      ],
     },
     {
       path: "/tasks/:slug",
-      element: <TaskDetail />
+      element: <TaskDetail />,
     },
     {
       path: "/mentors",
-      element: <Mentors />
+      element: <Mentors />,
     },
     {
       path: "/messages",
-      element: <Messages />
+      element: <Messages />,
     },
     {
       path: "/settings",
-      element: <Settings />
+      element: <Settings />,
     },
     {
       path: "/auth/login",
       element: <Login />,
-    }
-  ])
-}
+    },
+  ]);
+};
 
-export default Routes
+export default Routes;
