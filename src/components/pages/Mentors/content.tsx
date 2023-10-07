@@ -25,14 +25,14 @@ const MentorsContent = () => {
               title="Recent Mentors"
               swiperClass="recent-mentors-list"
               mentors={data?.recentMentors?.edges.map((mentor) => ({
-                id: mentor?.node?.id as string,
-                name: mentor?.node?.name ?? "",
-                role: mentor?.node?.role ?? "",
-                avatar: mentor?.node?.image ?? "",
-                rating: mentor?.node?.rating as number,
-                task: mentor?.node?.total_task ?? 0,
-                review: mentor?.node?.total_review ?? 0,
-                isFollowed: mentor?.node?.is_followed ?? false,
+                id: mentor?.node?.id,
+                name: mentor?.node?.name,
+                role: mentor?.node?.role,
+                avatar: mentor?.node?.image,
+                rating: mentor?.node?.rating,
+                task: mentor?.node?.total_task,
+                review: mentor?.node?.total_review,
+                isFollowed: mentor?.node?.is_followed,
               }))}
             />
           )}
@@ -45,14 +45,14 @@ const MentorsContent = () => {
             {data?.mentors &&
               data?.mentors?.edges.map((mentor) => (
                 <CardMentor
-                  name={mentor?.node?.name ?? ""}
-                  role={mentor?.node?.role ?? ""}
-                  task={mentor?.node?.total_task ?? 0}
-                  rating={mentor?.node?.rating as number}
-                  review={mentor?.node?.total_review ?? 0}
-                  avatar={mentor?.node?.image ?? ""}
-                  isFollowed={mentor?.node?.is_followed ?? false}
-                  description={mentor?.node?.description ?? ""}
+                  name={mentor?.node?.name}
+                  role={mentor?.node?.role}
+                  task={mentor?.node?.total_task}
+                  rating={mentor?.node?.rating}
+                  review={mentor?.node?.total_review}
+                  avatar={mentor?.node?.image}
+                  isFollowed={mentor?.node?.is_followed}
+                  description={mentor?.node?.description}
                 />
               ))}
           </div>
