@@ -58,16 +58,16 @@ const RunningTask = (props: RunningTaskProps) => {
       <div className="flex items-center gap-x-[18px]">
         <div className="relative">
           <motion.svg
-            width="100"
-            height="100"
-            viewBox="0 0 100 100"
+            width="70"
+            height="70"
+            viewBox="0 0 70 70"
             initial="hidden"
             animate="visible"
           >
             <motion.circle
-              cx="50"
-              cy="50"
-              r="49"
+              cx="35"
+              cy="35"
+              r="33"
               stroke="#546FFF"
               strokeWidth="3px"
               variants={draw}

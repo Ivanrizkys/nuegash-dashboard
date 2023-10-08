@@ -8,18 +8,18 @@ const RunningTaskLoader = () => {
         <div className="bg-primary-0 w-full max-w-[50px] h-6 my-4 rounded-skeleton-text"></div>
       </div>
       <div className="flex items-center gap-x-[18px] w-full">
-        <div className="w-full relative">
+        <div className="w-full max-w-[70px] relative">
           <motion.svg
-            width="100"
-            height="100"
-            viewBox="0 0 100 100"
+            width="70"
+            height="70"
+            viewBox="0 0 70 70"
             initial="hidden"
             animate="visible"
           >
             <motion.circle
-              cx="50"
-              cy="50"
-              r="49"
+              cx="35"
+              cy="35"
+              r="33"
               stroke="#546FFF"
               strokeWidth="3px"
               pathLength={1}
