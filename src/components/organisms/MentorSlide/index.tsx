@@ -10,19 +10,19 @@ import { SwiperContainer } from "@/src/styles/index";
 interface MentorSlideProps {
   title: string;
   swiperClass: string;
-  // mentors: Array<{
-  //   id: string;
-  //   name: string;
-  //   role: string;
-  //   task: number;
-  //   rating: number;
-  //   review: number;
-  //   avatar: string;
-  //   isFollowed: boolean;
-  // }>;
+  mentors: Array<{
+    id: string;
+    name: string;
+    role: string;
+    task: number;
+    rating: number;
+    review: number;
+    avatar: string;
+    isFollowed: boolean;
+  }>;
 }
 
-const MentorSlide = ({ title, swiperClass }: MentorSlideProps) => {
+const MentorSlide = ({ title, swiperClass, mentors }: MentorSlideProps) => {
   return (
     <div className="text-secondary-500">
       <div className="flex items-center justify-between">
@@ -48,16 +48,16 @@ const MentorSlide = ({ title, swiperClass }: MentorSlideProps) => {
             slidesPerView={"auto"}
             spaceBetween={32}
           >
-            {[0, 1, 2, 3, 4, 5].map((value) => (
+            {mentors.map((mentor) => (
               <SwiperSlide key={useId()}>
                 <CardMentor
-                  name="Natasya Sifa Aulia"
-                  role="UI UX Design"
-                  task={40}
-                  rating={4.7}
-                  review={750}
-                  avatar="https://res.cloudinary.com/draaoe7rc/image/upload/v1672717660/nuegas/mentor/mentor-1_io3lzd.png"
-                  isFollowed={false}
+                  name={mentor.name}
+                  role={mentor.role}
+                  task={mentor.task}
+                  rating={mentor.rating}
+                  review={mentor.review}
+                  avatar={mentor.avatar}
+                  isFollowed={mentor.isFollowed}
                 />
               </SwiperSlide>
             ))}

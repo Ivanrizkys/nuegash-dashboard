@@ -1,9 +1,9 @@
-import { useState, createRef, useCallback, useRef } from "react";
-import { findDOMNode } from "react-dom";
-import { OnProgressProps } from "react-player/base";
-import ReactPlayer from "react-player/youtube";
 import screenfull from "screenfull";
+import { findDOMNode } from "react-dom";
 import VideoBar from "../../atoms/VideoBar";
+import ReactPlayer from "react-player/youtube";
+import { OnProgressProps } from "react-player/base";
+import { useState, useCallback, useRef } from "react";
 
 interface VideoPlayerProps {
   src: string;
@@ -25,8 +25,8 @@ const VideoPlayer = ({ src }: VideoPlayerProps) => {
   }, []);
 
   const handleScreenFull = useCallback(() => {
-    screenfull.request(findDOMNode(playerRef.current) as Element)
-  }, [])
+    screenfull.request(findDOMNode(playerRef.current) as Element);
+  }, []);
 
   return (
     <div className="w-full h-[500px]  p-6">

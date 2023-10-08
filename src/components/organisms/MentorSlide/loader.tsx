@@ -3,29 +3,16 @@ import { useId } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ArrowLeft from "@/src/assets/icons/ArrowLeft";
-import ArrowRight from "@/src/assets/icons/ArrowRight";
-import CardTask from "@/src/components/molecules/CardTask";
 import { SwiperContainer } from "@/src/styles/index";
+import ArrowRight from "@/src/assets/icons/ArrowRight";
+import CardMentorLoader from "@/src/components/molecules/CardMentor/loader";
 
-interface TaskSlideProps {
+interface MentorSlideLoaderProps {
   title: string;
   swiperClass: string;
-  tasks: Array<{
-    id: string;
-    image: string;
-    imageHash: string;
-    role: string;
-    title: string;
-    progress: number;
-    timeRemaining: Date;
-    contributors: Array<{
-      image: string;
-    }>;
-    slug: string;
-  }>;
 }
 
-const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
+const MentorSlideLoader = ({ title, swiperClass }: MentorSlideLoaderProps) => {
   return (
     <div className="text-secondary-500">
       <div className="flex items-center justify-between">
@@ -51,18 +38,9 @@ const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
             slidesPerView={"auto"}
             spaceBetween={32}
           >
-            {tasks.map((task) => (
+            {[1, 2, 3, 4, 5, 6, 7].map((value) => (
               <SwiperSlide key={useId()}>
-                <CardTask
-                  image={task?.image}
-                  title={task?.title}
-                  role={task?.role}
-                  progress={task?.progress}
-                  timeRemaining="3 Days Left"
-                  contributor={task?.contributors}
-                  imageHash={task?.imageHash}
-                  slug={task?.slug}
-                />
+                <CardMentorLoader />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -72,4 +50,4 @@ const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
   );
 };
 
-export default TaskSlide;
+export default MentorSlideLoader;

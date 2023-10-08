@@ -1,16 +1,13 @@
-import TaskSlide from "@/src/components/organisms/TaskSlide";
+import { Suspense } from "react"
+import ExploreTaskContent from "./content";
+import ExploreContentLoader from "./loader";
 
-const ExploreTask = () => {
+const ExploreContent = () => {
   return (
-    <div className="p-8">
-      <section>
-        <TaskSlide title="The Limit" swiperClass="the-limit" />
-      </section>
-      <section className="mt-8">
-        <TaskSlide title="New Task" swiperClass="new-task" />
-      </section>
-    </div>
+    <Suspense fallback={<ExploreContentLoader />}>
+      <ExploreTaskContent />
+    </Suspense>
   )
 }
 
-export default ExploreTask
+export default ExploreContent;

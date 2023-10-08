@@ -4,28 +4,15 @@ import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ArrowLeft from "@/src/assets/icons/ArrowLeft";
 import ArrowRight from "@/src/assets/icons/ArrowRight";
-import CardTask from "@/src/components/molecules/CardTask";
 import { SwiperContainer } from "@/src/styles/index";
+import CardTaskLoader from "@/src/components/molecules/CardTask/loader";
 
-interface TaskSlideProps {
+interface TaskSlideLoaderProps {
   title: string;
   swiperClass: string;
-  tasks: Array<{
-    id: string;
-    image: string;
-    imageHash: string;
-    role: string;
-    title: string;
-    progress: number;
-    timeRemaining: Date;
-    contributors: Array<{
-      image: string;
-    }>;
-    slug: string;
-  }>;
 }
 
-const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
+const TaskSlideLoader = ({ title, swiperClass }: TaskSlideLoaderProps) => {
   return (
     <div className="text-secondary-500">
       <div className="flex items-center justify-between">
@@ -51,18 +38,9 @@ const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
             slidesPerView={"auto"}
             spaceBetween={32}
           >
-            {tasks.map((task) => (
+            {[1, 2, 3, 4, 5, 6].map((task) => (
               <SwiperSlide key={useId()}>
-                <CardTask
-                  image={task?.image}
-                  title={task?.title}
-                  role={task?.role}
-                  progress={task?.progress}
-                  timeRemaining="3 Days Left"
-                  contributor={task?.contributors}
-                  imageHash={task?.imageHash}
-                  slug={task?.slug}
-                />
+                <CardTaskLoader />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -72,4 +50,4 @@ const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
   );
 };
 
-export default TaskSlide;
+export default TaskSlideLoader;
