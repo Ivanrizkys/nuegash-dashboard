@@ -1,4 +1,5 @@
 import Routes from "@/src/routes/index";
+import { Toaster } from 'react-hot-toast'
 import React, { useCallback } from "react";
 import { RootState } from "./global/store";
 import { useLocation } from "react-router-dom";
@@ -27,6 +28,18 @@ function App() {
           onClick={() => dispatch(updateShowSidebar(false))}
         />
       )}
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          style: {
+            color: "#141522",
+            fontWeight: 500,
+            fontFamily: "Plus Jakarta Sans",
+            backgroundColor: "#FFFFFF"
+          }
+        }}
+      />
     </div>
   );
 }
