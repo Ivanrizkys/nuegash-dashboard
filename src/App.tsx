@@ -1,3 +1,4 @@
+import useAuth from "./hooks/useAuth";
 import Routes from "@/src/routes/index";
 import { Toaster } from 'react-hot-toast'
 import React, { useCallback } from "react";
@@ -10,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "@/src/components/organisms/Sidebar";
 
 function App() {
+  const auth = useAuth()
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const appState = useSelector((state: RootState) => state.app);
@@ -18,7 +20,7 @@ function App() {
 
   return (
     <div className="font-sans box-border">
-      {!pathname.includes("auth") && <Sidebar />}
+      {!pathname.includes("auth") && auth && <Sidebar />}
       <React.Suspense>
         <Routes />
       </React.Suspense>
