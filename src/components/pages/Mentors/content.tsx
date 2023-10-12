@@ -45,6 +45,7 @@ const MentorsContent = () => {
             {data?.mentors &&
               data?.mentors?.edges.map((mentor) => (
                 <CardMentor
+                  key={mentor?.node?.id}
                   name={mentor?.node?.name}
                   role={mentor?.node?.role}
                   task={mentor?.node?.total_task}

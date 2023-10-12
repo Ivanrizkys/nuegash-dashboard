@@ -1,12 +1,15 @@
 import { Suspense } from 'react';
-import DashboardContent from './content';
 import DashboardLoader from './loader';
+import DashboardContent from './content';
+import PrivateRoute from '@/src/components/atoms/PrivateRoute';
 
 const Dashboard = () => {
   return (
-    <Suspense fallback={<DashboardLoader />}>
-      <DashboardContent />
-    </Suspense>
+    <PrivateRoute>
+      <Suspense fallback={<DashboardLoader />}>
+        <DashboardContent />
+      </Suspense>
+    </PrivateRoute>
   );
 };
 
