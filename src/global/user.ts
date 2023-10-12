@@ -3,19 +3,17 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface UserState {
   Name: string;
   Class: number;
+  Email: string;
   ImageUrl: string;
   ImageHash: string;
-  Token: string;
-  RefreshToken: string;
 }
 
 const initialState: UserState = {
   Name: "",
   Class: 0,
+  Email: "",
   ImageUrl: "",
   ImageHash: "",
-  Token: "",
-  RefreshToken: "",
 };
 
 export const userSlice = createSlice({
@@ -23,7 +21,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     updateUser: (state, action: PayloadAction<UserState>) => {
-      state = action.payload;
+      return {
+        ...action.payload,
+      };
     },
   },
 });
