@@ -6,6 +6,7 @@ import TaskSlideLoader from "@/src/components/organisms/TaskSlide/loader";
 import TaskTodayLoader from "@/src/components/organisms/TaskToday/loader";
 import RunningTaskLoader from "@/src/components/molecules/RunningTask/loader";
 import MentorSlideLoader from "@/src/components/organisms/MentorSlide/loader";
+import PerformanceLoader from "@/src/components/molecules/Performance/loader";
 
 const DashboardLoader = () => {
   const userState = useSelector((state: RootState) => state.user)
@@ -46,6 +47,7 @@ const DashboardLoader = () => {
       </div>
       <div className="lg:w-4/12 p-6 sm:p-8 bg-[#F5F5F7] flex flex-col sm:flex-row-reverse gap-8 lg:gap lg:flex-col">
         <div className="bg-secondary-500 w-full h-[160px] rounded-default"></div>
+        <PerformanceLoader />
         <TaskTodayLoader />
       </div>
     </div>

@@ -10,8 +10,9 @@ import Activity from "@/src/components/molecules/Activity";
 import TaskSlide from "@/src/components/organisms/TaskSlide";
 import TaskToday from "@/src/components/organisms/TaskToday";
 import RunningTask from "@/src/components/molecules/RunningTask";
+import Performance from "@/src/components/molecules/Performance";
 import MentorSlide from "@/src/components/organisms/MentorSlide";
-import { ActivityData, RunningTaskData } from "@/src/libs/dto/json";
+import { ActivityData, RunningTaskData, PerformanceData } from "@/src/libs/dto/json";
 
 const DashboardContent = () => {
   const userState = useSelector((state: RootState) => state.user)
@@ -34,6 +35,14 @@ const DashboardContent = () => {
     };
     return data ? JSON.parse(data?.runningTask?.edges[0]?.node?.data) : temp;
   }, [data]);
+
+  const performance = useMemo<PerformanceData>(() => {
+    const temp: PerformanceData = {
+      speed: 0,
+      consistency: 0
+    }
+    return data ? JSON.parse(data?.performance?.edges[0]?.node?.data) : temp
+  }, [data])
 
   return (
     <div className="xl:ml-[252px] flex flex-col lg:flex-row bg-[#FAFAFA] min-h-screen">
@@ -107,7 +116,13 @@ const DashboardContent = () => {
         </section>
       </div>
       <div className="lg:w-4/12 p-6 sm:p-8 bg-[#F5F5F7] flex flex-col sm:flex-row-reverse gap-8 lg:gap lg:flex-col">
-        <div className="bg-secondary-500 w-full h-[160px] rounded-default"></div>
+        {data?.performance &&
+          <Performance 
+            speed={performance.speed}
+            consistency={performance.consistency}
+          />
+        }
+        
         {data?.taskToday && (
           <TaskToday
             image={data?.taskToday?.edges[0]?.node?.image ?? ""}
