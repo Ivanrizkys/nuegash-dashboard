@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { RootState } from "@/src/global/store";
 import AppBar from "@/src/components/organisms/AppBar";
 import ActivityLoader from "@/src/components/molecules/Activity/loader";
 import TaskSlideLoader from "@/src/components/organisms/TaskSlide/loader";
@@ -6,12 +8,14 @@ import RunningTaskLoader from "@/src/components/molecules/RunningTask/loader";
 import MentorSlideLoader from "@/src/components/organisms/MentorSlide/loader";
 
 const DashboardLoader = () => {
+  const userState = useSelector((state: RootState) => state.user)
+  
   return (
     <div className="xl:ml-[252px] flex flex-col lg:flex-row bg-[#FAFAFA] min-h-screen">
       <div className="lg:w-8/12 p-6 sm:p-8">
         <AppBar
-          title={`Hi, Yuna Marinka`}
-          userImg={"/profile.png"}
+          title={userState.Name}
+          userImg={userState.ImageUrl}
           description="Let's finish your task today"
           notificationActive={true}
         />

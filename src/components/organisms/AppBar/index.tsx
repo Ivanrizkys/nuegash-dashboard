@@ -40,7 +40,7 @@ const AppBar = (props: AppBarProps) => {
         <div>
           <div className="hidden xl:block">
             <h2 className="text-2xl font-semibold text-secondary-500 mb-2">
-              {title}
+              Hi, {title}
             </h2>
             {description && (
               <h3 className="text-base font-medium text-secondary-400">

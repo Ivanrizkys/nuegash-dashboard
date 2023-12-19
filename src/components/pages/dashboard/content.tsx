@@ -1,6 +1,8 @@
 import "./custom.css";
 import "swiper/css/navigation";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/src/global/store";
 import { useSuspenseQuery } from "@apollo/client";
 import AppBar from "@/src/components/organisms/AppBar";
 import { GET_OVERVIEW_DATA } from "@/src/service/query";
@@ -12,6 +14,8 @@ import MentorSlide from "@/src/components/organisms/MentorSlide";
 import { ActivityData, RunningTaskData } from "@/src/libs/dto/json";
 
 const DashboardContent = () => {
+  const userState = useSelector((state: RootState) => state.user)
+  
   const { data } = useSuspenseQuery(GET_OVERVIEW_DATA);
 
   const activity = useMemo<ActivityData>(() => {
@@ -35,8 +39,8 @@ const DashboardContent = () => {
     <div className="xl:ml-[252px] flex flex-col lg:flex-row bg-[#FAFAFA] min-h-screen">
       <div className="lg:w-8/12 p-6 sm:p-8">
         <AppBar
-          title={`Hi, Yuna Marinka`}
-          userImg={"/profile.png"}
+          title={userState.Name}
+          userImg={userState.ImageUrl}
           description="Let's finish your task today"
           notificationActive={true}
         />

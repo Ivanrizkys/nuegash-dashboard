@@ -1,9 +1,11 @@
 import { useCallback } from "react";
+import { useSelector } from "react-redux";
 import { DropzoneContainer } from "./custom";
 import Check from "@/src/assets/icons/Check";
 import { useParams } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import Clock from "@/src/assets/icons/Clock";
+import { RootState } from "@/src/global/store";
 import People from "@/src/assets/icons/People";
 import { useSuspenseQuery } from "@apollo/client";
 import Button from "@/src/components/atoms/Button";
@@ -13,6 +15,7 @@ import VideoPlayer from "@/src/components/molecules/VideoPlayer";
 
 const TaskDetailContent = () => {
   const params = useParams();
+  const userState = useSelector((state: RootState) => state.user)
 
   const { data } = useSuspenseQuery(GET_TASK_DETAIL, {
     variables: {
@@ -104,19 +107,19 @@ const TaskDetailContent = () => {
             <p className="text-sm font-medium text-secondary-400">
               Student's name
             </p>
-            <p className="text-sm font-semibold">Skylar Dias</p>
+            <p className="text-sm font-semibold">{userState.Name}</p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-sm font-medium text-secondary-400">
               Student's class
             </p>
-            <p className="text-sm font-semibold">MIPA 2</p>
+            <p className="text-sm font-semibold">{userState.Class}</p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-sm font-medium text-secondary-400">
               Student's number
             </p>
-            <p className="text-sm font-semibold">10</p>
+            <p className="text-sm font-semibold">{Math.round(Math.random() * (500 - 1) + 1)}</p>
           </div>
         </div>
         <h4 className="font-semibold text-xl mt-6 mb-5">File Task</h4>
