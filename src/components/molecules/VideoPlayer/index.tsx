@@ -1,6 +1,6 @@
 import screenfull from "screenfull";
 import { findDOMNode } from "react-dom";
-import VideoBar from "../../atoms/VideoBar";
+import VideoBar from "@/src/components/atoms/VideoBar";
 import ReactPlayer from "react-player/youtube";
 import { OnProgressProps } from "react-player/base";
 import { useState, useCallback, useRef } from "react";
