@@ -8,3 +8,8 @@ export interface RunningTaskData {
   onProgress: number;
   percentage: number;
 }
+
+export interface PerformanceData {
+  speed: number
+  consistency: number
+}

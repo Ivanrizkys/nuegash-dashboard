@@ -1,4 +1,4 @@
-import TaskSlideLoader from "../../organisms/TaskSlide/loader";
+import TaskSlideLoader from "@/src/components/organisms/TaskSlide/loader";
 
 const ExploreContentLoader = () => {
   return (

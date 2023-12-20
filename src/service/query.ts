@@ -76,6 +76,15 @@ export const GET_OVERVIEW_DATA = graphql(`
         }
       }
     }
+    performance: task_reportsCollection(first: 1, filter: {name: {eq: "Performance"}}) {
+      edges {
+        node {
+          id
+          name
+          data
+        }
+      }
+    }
   }
 `)
 
