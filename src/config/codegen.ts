@@ -1,12 +1,16 @@
+import 'dotenv/config'
 import { CodegenConfig } from "@graphql-codegen/cli";
+
+const url: string = process.env.VITE_SUPABASE_GRAPH_URL ?? ""
+const apikey: string = process.env.VITE_SUPABASE_ANON_APIKEY ?? ""
 
 const config: CodegenConfig = {
   schema: [
     {
-      "https://iazwrmzzrxmmzqirdrdh.supabase.co/graphql/v1":
+      [url]:
         {
           headers: {
-            apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlhendybXp6cnhtbXpxaXJkcmRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODc3NTUzNzMsImV4cCI6MjAwMzMzMTM3M30.p6Tof_IH6OI5TyRniMnnXj7K4OZ2CvYJQ20XGbOpUHM",
+            apikey,
           },
         },
     },

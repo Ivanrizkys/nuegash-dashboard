@@ -20,6 +20,7 @@
     "blurhash": "^2.0.5",
     "chart.js": "^4.1.2",
     "dayjs": "^1.11.7",
+    "dotenv": "^16.3.1",
     "framer-motion": "^10.16.4",
     "graphql": "16.6.0",
     "js-cookie": "^3.0.5",
