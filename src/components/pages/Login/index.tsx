@@ -1,4 +1,4 @@
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useAuth from "@/src/hooks/useAuth";
@@ -18,9 +18,9 @@ interface LoginFormValues {
 }
 
 const Login = () => {
-  const auth = useAuth()
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const auth = useAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
 
   const {
@@ -52,18 +52,26 @@ const Login = () => {
     setLoading(true);
     toast.promise<AuthTokenResponse>(supabaseLogin(data), {
       loading: "Signing in...",
-      success: (res) => {        
-        Cookies.set("token", res.data.session?.access_token as string, { expires: 7 })
-        Cookies.set("refresh-token", res.data.session?.refresh_token as string, { expires: 7 })
-        dispatch(updateUser({
-          Name: res.data.user?.user_metadata.name,
-          Class: res.data.user?.user_metadata.class,
-          Email: res.data.user?.email as string,
-          ImageHash: res.data.user?.user_metadata.image.hash,
-          ImageUrl: res.data.user?.user_metadata.image.url
-        }))
+      success: (res) => {
+        Cookies.set("token", res.data.session?.access_token as string, {
+          expires: 7,
+        });
+        Cookies.set(
+          "refresh-token",
+          res.data.session?.refresh_token as string,
+          { expires: 7 }
+        );
+        dispatch(
+          updateUser({
+            Name: res.data.user?.user_metadata.name,
+            Class: res.data.user?.user_metadata.class,
+            Email: res.data.user?.email as string,
+            ImageHash: res.data.user?.user_metadata.image.hash,
+            ImageUrl: res.data.user?.user_metadata.image.url,
+          })
+        );
         setLoading(false);
-        navigate("/")
+        navigate("/");
         return "Login success";
       },
       error: (err) => {
@@ -73,11 +81,11 @@ const Login = () => {
     });
   };
 
-  if (auth) return <Navigate to="/" />
+  if (auth) return <Navigate to="/" />;
 
   return (
     <div className="min-h-screen bg-primary-0 flex">
-      <div className="shrink-0 basis-[611px]">
+      <div className="basis-2/5 shrink-0 lg:shrink-0 lg:basis-[611px] hidden sm:block">
         <img
           src="/login-img.webp"
           alt="login image"
@@ -87,7 +95,7 @@ const Login = () => {
       <div className="basis-full px-6">
         <div className="max-w-[448px] h-screen flex flex-col items-center justify-center  mx-auto">
           <Logo />
-          <h2 className="text-2xl font-bold text-secondary-500 mt-6">
+          <h2 className="text-2xl font-bold text-secondary-500 mt-6 text-center">
             Login To Your Dashboard
           </h2>
           <form
