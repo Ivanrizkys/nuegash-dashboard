@@ -6,6 +6,7 @@ import { updateShowSidebar } from "./global/app";
 import useScreenResize from "./hooks/useScreenResize";
 import Backdrop from "@/src/components/atoms/Backdrop";
 import { useDispatch, useSelector } from "react-redux";
+import PageLoader from "@/src/components/atoms/PageLoader";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <div className="font-sans box-border">
-      <React.Suspense>
+      <React.Suspense fallback={<PageLoader />}>
         <Routes />
       </React.Suspense>
       {appState.showSidebar && appState.screenWidth < 1280 && (
