@@ -1,6 +1,11 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
 
+// protected route
+const PrivateRoute = React.lazy(
+  () => import("@/src/components/atoms/PrivateRoute"),
+);
+
 // for auth
 const Login = React.lazy(() => import("@/src/components/pages/Login"));
 
@@ -20,38 +25,43 @@ const Dashboard = React.lazy(() => import("@/src/components/pages/dashboard"));
 const Routes = () => {
   return useRoutes([
     {
-      path: "/",
-      element: <Dashboard />,
-    },
-    {
-      path: "/tasks",
-      element: <Tasks />,
+      element: <PrivateRoute />,
       children: [
         {
-          path: ":slug",
+          path: "/",
+          element: <Dashboard />,
+        },
+        {
+          path: "/tasks",
+          element: <Tasks />,
+          children: [
+            {
+              path: ":slug",
+              element: <TaskDetail />,
+            },
+            {
+              path: "",
+              element: <ExploreTask />,
+            },
+          ],
+        },
+        {
+          path: "/tasks/:slug",
           element: <TaskDetail />,
         },
         {
-          path: "",
-          element: <ExploreTask />,
+          path: "/mentors",
+          element: <Mentors />,
+        },
+        {
+          path: "/messages",
+          element: <Messages />,
+        },
+        {
+          path: "/settings",
+          element: <Settings />,
         },
       ],
-    },
-    {
-      path: "/tasks/:slug",
-      element: <TaskDetail />,
-    },
-    {
-      path: "/mentors",
-      element: <Mentors />,
-    },
-    {
-      path: "/messages",
-      element: <Messages />,
-    },
-    {
-      path: "/settings",
-      element: <Settings />,
     },
     {
       path: "/auth/login",

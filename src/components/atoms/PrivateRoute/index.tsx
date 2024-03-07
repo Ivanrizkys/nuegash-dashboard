@@ -1,14 +1,17 @@
-import { ReactNode } from "react";
 import useAuth from "@/src/hooks/useAuth";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import Sidebar from "@/src/components/organisms/Sidebar";
 
-interface PrivateRouteProps {
-  children: ReactNode;
-}
-
-const PrivateRoute = ({ children }: PrivateRouteProps) => {
+const PrivateRoute = () => {
   const auth = useAuth();
-  return auth ? <>{children}</> : <Navigate to="/auth/login" />;
+  return auth ? (
+    <>
+      <Sidebar />
+      <Outlet />
+    </>
+  ) : (
+    <Navigate to="/auth/login" />
+  );
 };
 
 export default PrivateRoute;
