@@ -10,16 +10,19 @@ interface CardMentorProps {
   review: number;
   avatar: string;
   isFollowed: boolean;
-  description?: string
+  description?: string;
 }
 
 const CardMentor = (props: CardMentorProps) => {
-  const { name, role, task, rating, review, avatar, isFollowed, description } = props;
+  const { name, role, task, rating, review, avatar, isFollowed, description } =
+    props;
 
   const id = useId();
 
   return (
-    <div className={`${description ? "w-auto" : "w-full max-w-[328px] min-w-[327px]"} bg-primary-0 rounded-default cursor-pointer p-6`}>
+    <div
+      className={`${description ? "w-auto" : "w-full max-w-[328px] min-w-[327px]"} bg-primary-0 rounded-default cursor-pointer p-6`}
+    >
       <div className="flex items-center">
         <img
           src={avatar}
@@ -41,7 +44,9 @@ const CardMentor = (props: CardMentorProps) => {
         </p>
       </div>
       {description && (
-        <p className="text-sm font-medium text-secondary-300 my-6 limit-3-text">{description}</p>
+        <p className="text-sm font-medium text-secondary-300 my-6 limit-3-text">
+          {description}
+        </p>
       )}
       <div className="flex items-center justify-between text-sm font-medium mt-5">
         <div className="flex items-center">

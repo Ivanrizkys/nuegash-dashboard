@@ -16,8 +16,8 @@ import { ActivityData } from "@/src/libs/dto/json";
 interface ActivityProps extends ActivityData {}
 
 const Activity = (props: ActivityProps) => {
-  const { data, labels } = props
-  
+  const { data, labels } = props;
+
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -25,7 +25,7 @@ const Activity = (props: ActivityProps) => {
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
   );
 
   const options: ChartOptions<any> = {

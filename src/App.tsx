@@ -1,6 +1,6 @@
 import useAuth from "./hooks/useAuth";
 import Routes from "@/src/routes/index";
-import { Toaster } from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
 import React, { useCallback } from "react";
 import { RootState } from "./global/store";
 import { useLocation } from "react-router-dom";
@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "@/src/components/organisms/Sidebar";
 
 function App() {
-  const auth = useAuth()
+  const auth = useAuth();
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const appState = useSelector((state: RootState) => state.app);
@@ -38,8 +38,8 @@ function App() {
             color: "#141522",
             fontWeight: 500,
             fontFamily: "Plus Jakarta Sans",
-            backgroundColor: "#FFFFFF"
-          }
+            backgroundColor: "#FFFFFF",
+          },
         }}
       />
     </div>

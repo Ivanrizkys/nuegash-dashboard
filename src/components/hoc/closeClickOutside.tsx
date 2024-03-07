@@ -13,7 +13,7 @@ export interface CloseClickOutsideProps {
 }
 
 function closeClickOutside<T extends CloseClickOutsideProps>(
-  WrappedComponent: ComponentType<T>
+  WrappedComponent: ComponentType<T>,
 ) {
   const Component = (props: Omit<T, keyof CloseClickOutsideProps>) => {
     const [open, setOpen] = useState(false);

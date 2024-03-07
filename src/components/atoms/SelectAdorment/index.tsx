@@ -1,6 +1,8 @@
 import { OptionsContainer } from "./custom";
 import { forwardRef, ReactNode, useEffect, useRef, useState } from "react";
-import closeClickOutside, { CloseClickOutsideProps } from "@/src/components/hoc/closeClickOutside";
+import closeClickOutside, {
+  CloseClickOutsideProps,
+} from "@/src/components/hoc/closeClickOutside";
 
 interface OptionProps {
   value: string;
@@ -18,7 +20,7 @@ interface SelectAdormentProps extends CloseClickOutsideProps {
 const SelectAdorment = forwardRef<any, SelectAdormentProps>(
   (
     { placeholder, defaultText, icon, children, setValue, open, setOpen },
-    ref
+    ref,
   ) => {
     const [title, setTitle] = useState<string>("");
 
@@ -73,7 +75,7 @@ const SelectAdorment = forwardRef<any, SelectAdormentProps>(
         </OptionsContainer>
       </div>
     );
-  }
+  },
 );
 
 export const Option = ({ value, children }: OptionProps) => {

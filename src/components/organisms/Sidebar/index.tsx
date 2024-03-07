@@ -16,7 +16,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { showSidebar, screenWidth } = useSelector(
-    (state: RootState) => state.app
+    (state: RootState) => state.app,
   );
 
   const handleItemClick = useCallback(() => {

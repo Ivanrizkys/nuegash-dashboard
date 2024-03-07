@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const SelectItems = styled.div`
   option {
@@ -6,12 +6,12 @@ export const SelectItems = styled.div`
     cursor: pointer;
     font-weight: 500;
     &:hover {
-      background: #F5F5F7
+      background: #f5f5f7;
     }
   }
-`
+`;
 
-export const OptionsContainer = styled.div<{active: boolean}>`
+export const OptionsContainer = styled.div<{ active: boolean }>`
   order: 1;
   width: 100%;
   position: absolute;
@@ -19,11 +19,11 @@ export const OptionsContainer = styled.div<{active: boolean}>`
   z-index: 10;
   overflow-y: auto;
   border-radius: 10px;
-  background: #FFFFFF;
-  max-height: ${(props) => props.active ? "255px" : "0"};
-  opacity: ${(props) => props.active ? "1" : "0"};
+  background: #ffffff;
+  max-height: ${(props) => (props.active ? "255px" : "0")};
+  opacity: ${(props) => (props.active ? "1" : "0")};
   transition-duration: 500ms;
-  transition-property: max-height,opacity;
+  transition-property: max-height, opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &::-webkit-scrollbar {
@@ -31,7 +31,7 @@ export const OptionsContainer = styled.div<{active: boolean}>`
     border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #F5F5F7;
+    background: #f5f5f7;
     border-radius: 10px;
   }
-`
+`;

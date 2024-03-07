@@ -10,6 +10,6 @@ export interface RunningTaskData {
 }
 
 export interface PerformanceData {
-  speed: number
-  consistency: number
+  speed: number;
+  consistency: number;
 }

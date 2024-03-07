@@ -24,7 +24,7 @@ const ExploreTaskContent = () => {
               contributors: JSON.parse(task?.node?.mentors).map(
                 (image: string) => ({
                   image,
-                })
+                }),
               ),
             }))}
           />
@@ -47,7 +47,7 @@ const ExploreTaskContent = () => {
               contributors: JSON.parse(task?.node?.mentors).map(
                 (image: string) => ({
                   image,
-                })
+                }),
               ),
             }))}
           />

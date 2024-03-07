@@ -12,11 +12,15 @@ import TaskToday from "@/src/components/organisms/TaskToday";
 import RunningTask from "@/src/components/molecules/RunningTask";
 import Performance from "@/src/components/molecules/Performance";
 import MentorSlide from "@/src/components/organisms/MentorSlide";
-import { ActivityData, RunningTaskData, PerformanceData } from "@/src/libs/dto/json";
+import {
+  ActivityData,
+  RunningTaskData,
+  PerformanceData,
+} from "@/src/libs/dto/json";
 
 const DashboardContent = () => {
-  const userState = useSelector((state: RootState) => state.user)
-  
+  const userState = useSelector((state: RootState) => state.user);
+
   const { data } = useSuspenseQuery(GET_OVERVIEW_DATA);
 
   const activity = useMemo<ActivityData>(() => {
@@ -39,10 +43,10 @@ const DashboardContent = () => {
   const performance = useMemo<PerformanceData>(() => {
     const temp: PerformanceData = {
       speed: 0,
-      consistency: 0
-    }
-    return data ? JSON.parse(data?.performance?.edges[0]?.node?.data) : temp
-  }, [data])
+      consistency: 0,
+    };
+    return data ? JSON.parse(data?.performance?.edges[0]?.node?.data) : temp;
+  }, [data]);
 
   return (
     <div className="xl:ml-[252px] flex flex-col lg:flex-row bg-[#FAFAFA] min-h-screen">
@@ -108,7 +112,7 @@ const DashboardContent = () => {
                 contributors: JSON.parse(task?.node?.mentors).map(
                   (image: string) => ({
                     image,
-                  })
+                  }),
                 ),
               }))}
             />
@@ -116,13 +120,13 @@ const DashboardContent = () => {
         </section>
       </div>
       <div className="lg:w-4/12 p-6 sm:p-8 bg-[#F5F5F7] flex flex-col sm:flex-row-reverse gap-8 lg:gap lg:flex-col">
-        {data?.performance &&
-          <Performance 
+        {data?.performance && (
+          <Performance
             speed={performance.speed}
             consistency={performance.consistency}
           />
-        }
-        
+        )}
+
         {data?.taskToday && (
           <TaskToday
             image={data?.taskToday?.edges[0]?.node?.image ?? ""}
@@ -132,12 +136,12 @@ const DashboardContent = () => {
             progress={data?.taskToday?.edges[0]?.node?.progress ?? 0}
             timeRemaining="3 Days Left"
             contributor={JSON.parse(
-              data?.taskToday?.edges[0]?.node?.mentors
+              data?.taskToday?.edges[0]?.node?.mentors,
             ).map((image: string) => ({
               image,
             }))}
             assessments={JSON.parse(
-              data?.taskToday?.edges[0]?.node?.assessment
+              data?.taskToday?.edges[0]?.node?.assessment,
             )}
             slug={data?.taskToday?.edges[0]?.node?.slug}
           />

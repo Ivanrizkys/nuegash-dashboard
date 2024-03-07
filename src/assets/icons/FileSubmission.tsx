@@ -1,10 +1,10 @@
 interface FileSubmissionProps {
-  variant: "success" | "error"
+  variant: "success" | "error";
 }
 
-const FileSubmission = ({variant}: FileSubmissionProps) => {
-  const color = variant === "error" ? "#FF5454" : "#546FFF"
-  
+const FileSubmission = ({ variant }: FileSubmissionProps) => {
+  const color = variant === "error" ? "#FF5454" : "#546FFF";
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,12 +13,7 @@ const FileSubmission = ({variant}: FileSubmissionProps) => {
       fill="none"
       viewBox="0 0 32 32"
     >
-      <g
-        stroke={color}
-        strokeMiterlimit="10"
-        strokeWidth="1.5"
-        opacity="0.28"
-      >
+      <g stroke={color} strokeMiterlimit="10" strokeWidth="1.5" opacity="0.28">
         <path d="M28.894 19.067l-.534 6.666c-.2 2.04-.36 3.6-3.973 3.6H7.614c-3.614 0-3.774-1.56-3.974-3.6l-.533-6.666a4.041 4.041 0 01.867-2.92L4 16.12a3.966 3.966 0 013.08-1.454h17.84c1.24 0 2.334.56 3.054 1.427.013.014.026.027.026.04a3.9 3.9 0 01.894 2.934z"></path>
         <path
           strokeLinecap="round"

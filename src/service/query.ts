@@ -2,7 +2,7 @@ import { graphql } from "@/src/libs/dto/index";
 
 export const GET_OVERVIEW_DATA = graphql(`
   query getOverviewData {
-    tasksCollection(orderBy: {id: AscNullsLast}) {
+    tasksCollection(orderBy: { id: AscNullsLast }) {
       edges {
         cursor
         node {
@@ -21,7 +21,7 @@ export const GET_OVERVIEW_DATA = graphql(`
         }
       }
     }
-    mentorsCollection(orderBy: {id: AscNullsLast}) {
+    mentorsCollection(orderBy: { id: AscNullsLast }) {
       edges {
         cursor
         node {
@@ -38,7 +38,10 @@ export const GET_OVERVIEW_DATA = graphql(`
         }
       }
     }
-    taskToday: tasksCollection(filter: {id: {eq: "1643fb20-4a4e-497e-9bd6-4dc7515642fd"}}, first: 1) {
+    taskToday: tasksCollection(
+      filter: { id: { eq: "1643fb20-4a4e-497e-9bd6-4dc7515642fd" } }
+      first: 1
+    ) {
       edges {
         cursor
         node {
@@ -58,7 +61,10 @@ export const GET_OVERVIEW_DATA = graphql(`
         }
       }
     }
-    activity: task_reportsCollection(first: 1, filter: {name: {eq: "Activity"}}) {
+    activity: task_reportsCollection(
+      first: 1
+      filter: { name: { eq: "Activity" } }
+    ) {
       edges {
         node {
           id
@@ -67,7 +73,10 @@ export const GET_OVERVIEW_DATA = graphql(`
         }
       }
     }
-    runningTask: task_reportsCollection(first: 1, filter: {name: {eq: "Running Task"}}) {
+    runningTask: task_reportsCollection(
+      first: 1
+      filter: { name: { eq: "Running Task" } }
+    ) {
       edges {
         node {
           id
@@ -76,7 +85,10 @@ export const GET_OVERVIEW_DATA = graphql(`
         }
       }
     }
-    performance: task_reportsCollection(first: 1, filter: {name: {eq: "Performance"}}) {
+    performance: task_reportsCollection(
+      first: 1
+      filter: { name: { eq: "Performance" } }
+    ) {
       edges {
         node {
           id
@@ -86,11 +98,11 @@ export const GET_OVERVIEW_DATA = graphql(`
       }
     }
   }
-`)
+`);
 
 export const GET_TASK_DATA = graphql(`
   query getTaskData {
-    theLimit: tasksCollection(orderBy: {progress: DescNullsLast}) {
+    theLimit: tasksCollection(orderBy: { progress: DescNullsLast }) {
       edges {
         cursor
         node {
@@ -109,7 +121,7 @@ export const GET_TASK_DATA = graphql(`
         }
       }
     }
-    newTask: tasksCollection(orderBy: {id: AscNullsLast}) {
+    newTask: tasksCollection(orderBy: { id: AscNullsLast }) {
       edges {
         cursor
         node {
@@ -129,11 +141,11 @@ export const GET_TASK_DATA = graphql(`
       }
     }
   }
-`)
+`);
 
 export const GET_MENTORS_DATA = graphql(`
   query getMentorsData {
-    recentMentors: mentorsCollection(orderBy: {created_at: DescNullsLast}) {
+    recentMentors: mentorsCollection(orderBy: { created_at: DescNullsLast }) {
       edges {
         cursor
         node {
@@ -150,7 +162,7 @@ export const GET_MENTORS_DATA = graphql(`
         }
       }
     }
-    mentors: mentorsCollection(orderBy: {id: AscNullsLast}) {
+    mentors: mentorsCollection(orderBy: { id: AscNullsLast }) {
       edges {
         cursor
         node {
@@ -168,11 +180,11 @@ export const GET_MENTORS_DATA = graphql(`
       }
     }
   }
-`)
+`);
 
 export const GET_TASK_DETAIL = graphql(`
-  query getTaskDetail ($slug: String) {
-    taskDetail: tasksCollection(first: 1, filter: {slug: {eq: $slug}}) {
+  query getTaskDetail($slug: String) {
+    taskDetail: tasksCollection(first: 1, filter: { slug: { eq: $slug } }) {
       edges {
         cursor
         node {
@@ -191,4 +203,4 @@ export const GET_TASK_DETAIL = graphql(`
       }
     }
   }
-`)
+`);

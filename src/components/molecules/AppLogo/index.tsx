@@ -12,4 +12,4 @@ const AppLogo = () => {
   );
 };
 
-export default AppLogo
+export default AppLogo;

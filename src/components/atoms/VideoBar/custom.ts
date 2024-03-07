@@ -7,9 +7,11 @@ export const Progress = styled.input.attrs(() => ({
   width: 70%;
   height: 8px;
   border-radius: 8px;
-  background: #F5F5F7;
+  background: #f5f5f7;
   background-image: linear-gradient(#141522, #141522);
-  background-size: ${props => ((props.value as number) * 100) / (props.max as number)}% 100%;
+  background-size: ${(props) =>
+      ((props.value as number) * 100) / (props.max as number)}%
+    100%;
   background-repeat: no-repeat;
 
   &::-webkit-slider-thumb {
@@ -19,7 +21,9 @@ export const Progress = styled.input.attrs(() => ({
     background: #141522;
     cursor: pointer;
     border: none;
-    transition: width .2s, height .2s;
+    transition:
+      width 0.2s,
+      height 0.2s;
   }
   &::-moz-range-thumb {
     appearance: none;
@@ -30,7 +34,9 @@ export const Progress = styled.input.attrs(() => ({
     cursor: pointer;
     border: none;
     box-shadow: 0 0 2px 0 #555;
-    transition: width .2s, height .2s;
+    transition:
+      width 0.2s,
+      height 0.2s;
   }
   &::-ms-thumb {
     appearance: none;
@@ -41,9 +47,11 @@ export const Progress = styled.input.attrs(() => ({
     cursor: pointer;
     border: none;
     box-shadow: 0 0 2px 0 #555;
-    transition: width .2s, height .2s;
+    transition:
+      width 0.2s,
+      height 0.2s;
   }
-  
+
   &::-webkit-slider-thumb:hover {
     height: 20px;
     width: 20px;

@@ -6,10 +6,10 @@ const Login = React.lazy(() => import("@/src/components/pages/Login"));
 
 // for dashboard content
 const TaskDetail = React.lazy(
-  () => import("@/src/components/pages/TaskDetail")
+  () => import("@/src/components/pages/TaskDetail"),
 );
 const ExploreTask = React.lazy(
-  () => import("@/src/components/pages/ExploreTask")
+  () => import("@/src/components/pages/ExploreTask"),
 );
 const Tasks = React.lazy(() => import("@/src/components/pages/Tasks"));
 const Mentors = React.lazy(() => import("@/src/components/pages/Mentors"));

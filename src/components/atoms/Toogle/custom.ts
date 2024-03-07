@@ -7,6 +7,6 @@ export const ToogleContainer = styled.div`
 
   input:checked ~ label div.toogle-circle {
     transform: translateX(25px);
-    background: #546FFF;
-  }  
-`
+    background: #546fff;
+  }
+`;

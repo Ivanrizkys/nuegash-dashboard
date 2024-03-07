@@ -12,7 +12,7 @@ export default defineConfig(({ command, mode }) => {
     },
     define: {
       "process.env.SUPABASE_SERVICE_ROLE_APIKEY": JSON.stringify(
-        env.SUPABASE_SERVICE_ROLE_APIKEY
+        env.SUPABASE_SERVICE_ROLE_APIKEY,
       ),
     },
   };

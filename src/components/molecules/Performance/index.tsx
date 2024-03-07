@@ -12,7 +12,7 @@ const Performance = ({ speed, consistency }: PerformaceProps) => {
         <p className="text-base font-semibold">Performance</p>
         <div className="flex justify-evenly mt-4">
           <div className="flex flex-col gap-x-1  items-center">
-            <CircularProgress 
+            <CircularProgress
               r={35}
               stroke="#546FFF"
               strokeWidth="3px"
@@ -21,7 +21,7 @@ const Performance = ({ speed, consistency }: PerformaceProps) => {
             <p className="text-sm font-medium">Speed</p>
           </div>
           <div className="flex flex-col gap-x-1  items-center">
-            <CircularProgress 
+            <CircularProgress
               r={35}
               stroke="#546FFF"
               strokeWidth="3px"
@@ -32,7 +32,7 @@ const Performance = ({ speed, consistency }: PerformaceProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Performance;
