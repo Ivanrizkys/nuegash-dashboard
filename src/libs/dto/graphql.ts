@@ -191,7 +191,7 @@ export type MutationDeleteFromtasksCollectionArgs = {
 
 /** The root type for creating and mutating data */
 export type MutationGenerate_SlugArgs = {
-  input_text?: InputMaybe<Scalars["String"]["input"]>;
+  input_text: Scalars["String"]["input"];
 };
 
 /** The root type for creating and mutating data */
@@ -295,6 +295,7 @@ export type QueryMentorsCollectionArgs = {
   filter?: InputMaybe<MentorsFilter>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<Array<MentorsOrderBy>>;
 };
 
@@ -310,6 +311,7 @@ export type QueryTask_CategoriesCollectionArgs = {
   filter?: InputMaybe<Task_CategoriesFilter>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<Array<Task_CategoriesOrderBy>>;
 };
 
@@ -320,6 +322,7 @@ export type QueryTask_ReportsCollectionArgs = {
   filter?: InputMaybe<Task_ReportsFilter>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<Array<Task_ReportsOrderBy>>;
 };
 
@@ -330,6 +333,7 @@ export type QueryTasksCollectionArgs = {
   filter?: InputMaybe<TasksFilter>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<Array<TasksOrderBy>>;
 };
 
@@ -497,6 +501,7 @@ export type Task_CategoriesTasksCollectionArgs = {
   filter?: InputMaybe<TasksFilter>;
   first?: InputMaybe<Scalars["Int"]["input"]>;
   last?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   orderBy?: InputMaybe<Array<TasksOrderBy>>;
 };
 
