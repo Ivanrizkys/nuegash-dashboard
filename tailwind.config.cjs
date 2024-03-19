@@ -9,6 +9,9 @@ module.exports = {
       sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.serif]
     },
     extend: {
+      width: {
+        'radix-select-width': 'var(--radix-select-trigger-width)'
+      },
       borderRadius: {
         default: '10px',
         'skeleton-text': '20px'
