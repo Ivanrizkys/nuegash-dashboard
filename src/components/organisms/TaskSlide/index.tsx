@@ -1,5 +1,4 @@
 import "swiper/css";
-import { useId } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ArrowLeft from "@/src/assets/icons/ArrowLeft";
@@ -52,7 +51,7 @@ const TaskSlide = ({ title, swiperClass, tasks }: TaskSlideProps) => {
             spaceBetween={32}
           >
             {tasks.map((task) => (
-              <SwiperSlide key={useId()}>
+              <SwiperSlide key={task.id}>
                 <CardTask
                   image={task?.image}
                   title={task?.title}
