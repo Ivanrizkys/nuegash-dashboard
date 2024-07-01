@@ -25,7 +25,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen">
+    <>
       <nav className="bg-primary-0 p-8 w-full">
         <AppBar
           title="Settings"
@@ -116,7 +116,7 @@ const Settings = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-    </div>
+    </>
   );
 };
 

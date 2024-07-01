@@ -12,7 +12,7 @@ const DashboardLoader = () => {
   const userState = useSelector((state: RootState) => state.user);
 
   return (
-    <div className="xl:ml-[252px] flex flex-col lg:flex-row bg-[#FAFAFA] min-h-screen">
+    <div className="flex flex-col lg:flex-row">
       <div className="lg:w-8/12 p-6 sm:p-8">
         <AppBar
           title={userState.Name}

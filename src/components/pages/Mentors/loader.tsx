@@ -4,7 +4,7 @@ import MentorSlideLoader from "@/src/components/organisms/MentorSlide/loader";
 
 const MentorsLoader = () => {
   return (
-    <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen">
+    <>
       <nav className="bg-primary-0 p-8 w-full">
         <AppBar
           title="Explore Mentors"
@@ -32,7 +32,7 @@ const MentorsLoader = () => {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 };
 

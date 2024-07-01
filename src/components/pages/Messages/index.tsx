@@ -2,7 +2,7 @@ import AppBar from "@/src/components/organisms/AppBar";
 
 const Messages = () => {
   return (
-    <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col">
       <nav className="bg-primary-0 p-8 w-full">
         <AppBar
           title="Message"

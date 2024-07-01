@@ -8,7 +8,7 @@ const MentorsContent = () => {
   const { data } = useSuspenseQuery(GET_MENTORS_DATA);
 
   return (
-    <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen">
+    <>
       <nav className="bg-primary-0 p-8 w-full">
         <AppBar
           title="Explore Mentors"
@@ -59,7 +59,7 @@ const MentorsContent = () => {
           </div>
         </section>
       </div>
-    </div>
+    </>
   );
 };
 

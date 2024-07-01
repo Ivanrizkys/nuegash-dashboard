@@ -3,7 +3,7 @@ import AppBar from "@/src/components/organisms/AppBar";
 
 const Tasks = () => {
   return (
-    <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen">
+    <>
       <nav className="bg-primary-0 p-8 w-full">
         <AppBar
           title="Explore Task"
@@ -16,7 +16,7 @@ const Tasks = () => {
       <div>
         <Outlet />
       </div>
-    </div>
+    </>
   );
 };
 
