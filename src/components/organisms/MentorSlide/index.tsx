@@ -1,5 +1,4 @@
 import "swiper/css";
-import { useId } from "react";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ArrowLeft from "@/src/assets/icons/ArrowLeft";
@@ -49,7 +48,7 @@ const MentorSlide = ({ title, swiperClass, mentors }: MentorSlideProps) => {
             spaceBetween={32}
           >
             {mentors.map((mentor) => (
-              <SwiperSlide key={useId()}>
+              <SwiperSlide key={mentor.id}>
                 <CardMentor
                   name={mentor.name}
                   role={mentor.role}
