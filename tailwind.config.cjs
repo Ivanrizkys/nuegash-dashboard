@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin')
+const animate = require('tailwindcss-animate')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
@@ -77,6 +78,7 @@ module.exports = {
     }
   },
   plugins: [
+    animate,
     plugin(({ addComponents }) => {
       addComponents({
         '.limit-3-text': {
