@@ -59,7 +59,7 @@ const Login = () => {
         Cookies.set(
           "refresh-token",
           res.data.session?.refresh_token as string,
-          { expires: 7 }
+          { expires: 7 },
         );
         dispatch(
           updateUser({
@@ -68,7 +68,7 @@ const Login = () => {
             Email: res.data.user?.email as string,
             ImageHash: res.data.user?.user_metadata.image.hash,
             ImageUrl: res.data.user?.user_metadata.image.url,
-          })
+          }),
         );
         setLoading(false);
         navigate("/");

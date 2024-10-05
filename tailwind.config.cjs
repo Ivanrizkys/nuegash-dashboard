@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin')
+const animate = require('tailwindcss-animate')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
@@ -9,6 +10,9 @@ module.exports = {
       sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.serif]
     },
     extend: {
+      width: {
+        'radix-select-width': 'var(--radix-select-trigger-width)'
+      },
       borderRadius: {
         default: '10px',
         'skeleton-text': '20px'
@@ -74,6 +78,7 @@ module.exports = {
     }
   },
   plugins: [
+    animate,
     plugin(({ addComponents }) => {
       addComponents({
         '.limit-3-text': {

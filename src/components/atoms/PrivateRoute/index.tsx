@@ -1,14 +1,23 @@
-import { ReactNode } from "react";
+import { Suspense } from "react";
+import PageLoader from "../PageLoader";
 import useAuth from "@/src/hooks/useAuth";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import Sidebar from "@/src/components/organisms/Sidebar";
 
-interface PrivateRouteProps {
-  children: ReactNode;
-}
-
-const PrivateRoute = ({ children }: PrivateRouteProps) => {
+const PrivateRoute = () => {
   const auth = useAuth();
-  return auth ? <>{children}</> : <Navigate to="/auth/login" />;
+  return auth ? (
+    <>
+      <Sidebar />
+      <div className="xl:ml-[252px] bg-[#FAFAFA] min-h-screen">
+        <Suspense fallback={<PageLoader />}>
+          <Outlet />
+        </Suspense>
+      </div>
+    </>
+  ) : (
+    <Navigate to="/auth/login" />
+  );
 };
 
 export default PrivateRoute;

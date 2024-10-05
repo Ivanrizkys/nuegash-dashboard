@@ -4,16 +4,10 @@ const ExploreContentLoader = () => {
   return (
     <div className="p-8">
       <section>
-        <TaskSlideLoader 
-          title="The Limit"
-          swiperClass="the-limit-loader"
-        />
+        <TaskSlideLoader title="The Limit" swiperClass="the-limit-loader" />
       </section>
       <section className="mt-8">
-        <TaskSlideLoader 
-          title="New Task"
-          swiperClass="new-task-loader"
-        />
+        <TaskSlideLoader title="New Task" swiperClass="new-task-loader" />
       </section>
     </div>
   );

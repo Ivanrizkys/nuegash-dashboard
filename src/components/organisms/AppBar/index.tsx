@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import Sort from "@/src/assets/icons/Sort";
 import Search from "@/src/assets/icons/Search";
 import Input from "@/src/components/atoms/Input";
 import Category from "@/src/assets/icons/Category";
-import UserAction from "@/src/components/molecules/UserAction";
-import HamburgerMenu from "@/src/assets/icons/HamburgerMenu";
-import { useDispatch } from "react-redux";
 import { updateShowSidebar } from "@/src/global/app";
-import SelectAdorment, { Option } from "@/src/components/atoms/SelectAdorment";
+import HamburgerMenu from "@/src/assets/icons/HamburgerMenu";
+import UserAction from "@/src/components/molecules/UserAction";
+import SelectAdorment from "@/src/components/atoms/SelectAdorment";
 
 interface AppBarProps {
   title: string;
@@ -28,7 +28,8 @@ const AppBar = (props: AppBarProps) => {
     placeholder,
   } = props;
 
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("upcoming");
+  const [sortBy, setSortBy] = useState<string>("deadline");
 
   const dispatch = useDispatch();
 
@@ -77,25 +78,44 @@ const AppBar = (props: AppBarProps) => {
           </div>
           <div className="w-full max-w-[368px] hidden lg:flex items-center justify-between">
             <SelectAdorment
-              defaultText="Category"
+              items={[
+                {
+                  title: "Upcoming",
+                  value: "upcoming",
+                },
+                {
+                  title: "Done",
+                  value: "done",
+                },
+                {
+                  title: "Invalid",
+                  value: "invalid",
+                },
+              ]}
+              value={category}
               setValue={setCategory}
               icon={<Category />}
-            >
-              <Option value="">Category</Option>
-              <Option value="upcoming">Upcoming</Option>
-              <Option value="done">Done</Option>
-              <Option value="invalid">Invalid</Option>
-            </SelectAdorment>
+            />
             <SelectAdorment
+              items={[
+                {
+                  title: "Deadline",
+                  value: "deadline",
+                },
+                {
+                  title: "Assigment",
+                  value: "assigment",
+                },
+                {
+                  title: "Progress",
+                  value: "progress",
+                },
+              ]}
               placeholder="Sort By:"
-              defaultText="Deadline"
-              setValue={setCategory}
+              value={sortBy}
+              setValue={setSortBy}
               icon={<Sort />}
-            >
-              <Option value="deadline">Deadline</Option>
-              <Option value="assigment">Assigment</Option>
-              <Option value="progress">Progress</Option>
-            </SelectAdorment>
+            />
           </div>
         </div>
       )}

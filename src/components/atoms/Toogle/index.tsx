@@ -1,16 +1,16 @@
-import { useId } from "react"
-import { ToogleContainer } from "./custom"
+import { useId } from "react";
+import { ToogleContainer } from "./custom";
 
 interface ToogleProps {
   // id: string
-  label: string
+  label: string;
 }
 
 const Toogle = (props: ToogleProps) => {
-  const { label } = props
-  
-  const id = useId()
-  
+  const { label } = props;
+
+  const id = useId();
+
   return (
     <ToogleContainer>
       <input type="checkbox" id={id} className="hidden" />
@@ -21,7 +21,7 @@ const Toogle = (props: ToogleProps) => {
       </label>
       <span className="text-sm font-semibold text-secondary-500">{label}</span>
     </ToogleContainer>
-  )
-}
+  );
+};
 
-export default Toogle
+export default Toogle;

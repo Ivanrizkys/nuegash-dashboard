@@ -17,4 +17,4 @@ const Sort = () => {
   );
 };
 
-export default Sort
+export default Sort;

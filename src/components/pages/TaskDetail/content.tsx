@@ -15,7 +15,7 @@ import VideoPlayer from "@/src/components/molecules/VideoPlayer";
 
 const TaskDetailContent = () => {
   const params = useParams();
-  const userState = useSelector((state: RootState) => state.user)
+  const userState = useSelector((state: RootState) => state.user);
 
   const { data } = useSuspenseQuery(GET_TASK_DETAIL, {
     variables: {
@@ -88,7 +88,7 @@ const TaskDetailContent = () => {
                     <Check />
                     <p className="text-secondary-500 text-sm">{val}</p>
                   </div>
-                )
+                ),
               )}
           </div>
         </div>
@@ -119,7 +119,9 @@ const TaskDetailContent = () => {
             <p className="text-sm font-medium text-secondary-400">
               Student's number
             </p>
-            <p className="text-sm font-semibold">{Math.round(Math.random() * (500 - 1) + 1)}</p>
+            <p className="text-sm font-semibold">
+              {Math.round(Math.random() * (500 - 1) + 1)}
+            </p>
           </div>
         </div>
         <h4 className="font-semibold text-xl mt-6 mb-5">File Task</h4>
@@ -157,7 +159,7 @@ const TaskDetailContent = () => {
                 <p key={err.code} className="text-error-500 text-xs mt-[12px]">
                   {err.message}
                 </p>
-              ))
+              )),
             )}
           {acceptedFiles.length > 0 && (
             <ul className="">

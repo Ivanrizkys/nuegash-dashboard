@@ -51,7 +51,7 @@ const PerformanceLoader = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default PerformanceLoader;

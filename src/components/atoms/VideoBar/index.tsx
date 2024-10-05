@@ -31,7 +31,7 @@ const VideoBar = (props: VideobarProps) => {
     setPlay,
     setElapsed,
     handlePip,
-    handleScreenFull
+    handleScreenFull,
   } = props;
 
   dayjs.extend(durationPlugin);
@@ -42,7 +42,7 @@ const VideoBar = (props: VideobarProps) => {
       const target = e.target as EventTarget & HTMLInputElement;
       playerRef.current?.seekTo(parseFloat(target.value), "fraction");
     },
-    []
+    [],
   );
 
   return (

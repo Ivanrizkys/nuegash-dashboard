@@ -7,7 +7,7 @@ import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter } from "react-router-dom";
 import { persistor, store } from "@/src/global/store";
 import { Provider as ReduxProvider } from "react-redux";
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -20,5 +20,5 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         </ReduxProvider>
       </BrowserRouter>
     </ApolloProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

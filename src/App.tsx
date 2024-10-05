@@ -1,18 +1,14 @@
-import useAuth from "./hooks/useAuth";
 import Routes from "@/src/routes/index";
-import { Toaster } from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
 import React, { useCallback } from "react";
 import { RootState } from "./global/store";
-import { useLocation } from "react-router-dom";
 import { updateShowSidebar } from "./global/app";
 import useScreenResize from "./hooks/useScreenResize";
 import Backdrop from "@/src/components/atoms/Backdrop";
 import { useDispatch, useSelector } from "react-redux";
-import Sidebar from "@/src/components/organisms/Sidebar";
+import PageLoader from "@/src/components/atoms/PageLoader";
 
 function App() {
-  const auth = useAuth()
-  const { pathname } = useLocation();
   const dispatch = useDispatch();
   const appState = useSelector((state: RootState) => state.app);
 
@@ -20,8 +16,7 @@ function App() {
 
   return (
     <div className="font-sans box-border">
-      {!pathname.includes("auth") && auth && <Sidebar />}
-      <React.Suspense>
+      <React.Suspense fallback={<PageLoader />}>
         <Routes />
       </React.Suspense>
       {appState.showSidebar && appState.screenWidth < 1280 && (
@@ -38,8 +33,8 @@ function App() {
             color: "#141522",
             fontWeight: 500,
             fontFamily: "Plus Jakarta Sans",
-            backgroundColor: "#FFFFFF"
-          }
+            backgroundColor: "#FFFFFF",
+          },
         }}
       />
     </div>
